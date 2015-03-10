@@ -1,0 +1,57 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+		
+body {
+	font-family:helvetica;
+	font-size: 14px;
+	font-weight:normal;
+	background: url('bg.png') no-repeat top left;
+	background-attachment: fixed;
+}
+	 
+header {
+	background-color:#990000;
+	top: 0px;
+	width: 100%;
+}
+		
+header h1 {
+	color:white;font-size: 64pt;font-weight: lighter;
+   }
+		  
+header h2 {
+	color:#C0C0C0;font-weight: normal;padding-left:30px;
+}
+
+.my-header {
+	padding: 30px;
+}
+
+.profile-bar {
+	background-color:#000000;
+	
+	
+	
+}
+
+#login {
+	background-color: white;font-weight: normal;border: 1px solid #333;border-radius:10px;margin-top:25%;margin-left: auto;margin-right: auto;width: 20%;height: 160px;
+}
+
+#login-header {
+	background-color: #990000;color: white;font-size:18pt;font-weight: lighter;height:30px;border-top-left-radius:8px;border-top-right-radius: 8px;padding-left: 10px;padding-top: 5px;
+}
+
+.my-button {
+  border-radius: 10px;font-family: Arial;color: #ffffff; font-size: 13px; background: #c7c7c7; padding: 10px 20px 10px 20px; text-decoration: none; border
+}
+
+.my-button {
+  background: #ababab;text-decoration: none;
+}
+
+footer {
+	position: fixed;top: 97%;right: 1%;
+}
