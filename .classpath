@@ -9,7 +9,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Tomcatv7"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/tomcat"/>
 	<classpathentry kind="lib" path="tomcatJARS/bin/bootstrap.jar"/>
 	<classpathentry kind="lib" path="tomcatJARS/bin/commons-daemon.jar"/>
 	<classpathentry kind="lib" path="tomcatJARS/bin/tomcat-juli.jar"/>
