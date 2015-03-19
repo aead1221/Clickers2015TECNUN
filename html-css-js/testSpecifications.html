@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Clickers - Test Specifications</title>
+        <script type="text/javascript" src="javascript/clickers.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/clickers.css">
+	</head>
+	<body onload='toggleP();toggleTS()'>
+        <header>
+            <div id="clk-header">
+                <h1>Clickers</h1>
+                <h2>TECNUN's online test taking platform</h2>
+            </div>
+            <div id="clk-user-bar">
+                <div id="clk-user-buttons">
+                    <a href="UserPersonalInfo.html">
+                        <span id="clk-user-view">
+                            <img id="clk-user-icon" src="user-icon.png">
+                            User
+                        </span>
+                    </a>
+                    <a href="Login.html">
+                        <span id="clk-user-logout">
+                            Logout
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <a href="Login.html">
+                <div id="clk-menu-bar">
+                    B A C K   &nbspT O&nbsp   M E N U
+                </div>
+            </a>
+        </header>
+        <div id='clk-box'>
+            <h3 align='center'>Test Specifications</h3><br>
+            <table><tr><form action='PlantillaExamen'>
+                <table>
+                    <tr>
+                        <td>
+                            <input onclick='toggleTS()' type='radio' name='ts-ts'>
+                        </td>
+                        <td>
+                            <h6 align='left'>Test</h6>
+                        </td>
+                        <td>
+                            &nbsp&nbsp<input onclick='toggleTS()' type='radio' name='ts-ts'>
+                        </td>
+                        <td>
+                            <h6 align='left'>Survey</h6>
+                        </td>
+                        <td>
+                            &nbsp&nbsp&nbsp<input onclick="toggleP()" id='ts-cb' type='checkbox'>
+                        </td>
+                        <td>
+                            <h6 id='ts-p-text' align='left'>Penalized</h6>
+                        </td>
+                        <td>
+                            &nbsp&nbsp&nbsp<span id='ts-p'><input id='ts-p-in' type='text'>%</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='7'>
+                            <br><h6 align='left'>Name for the test:</h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='7'>
+                            <input type='text' name='nom'><br><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='7'>
+                            <h6 align='left'>Number of questions:</h6>
+                        </td>    
+                    </tr>
+                    <tr>
+                        <td colspan='7'>
+                            <input type='text' name='num'><br><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='7'>
+                            <h6 id='ts-ns' align='left'>Number of options for each question:</h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id='ts-ns-input' colspan='7'><input type='text' name='op'><br><br></td>
+                    </tr>
+                    </table>
+                    </form>   <!--remove the three, uncomment below-->
+                    </tr><tr>
+                    <table>
+                    <tr>
+                        <td colspan='7'>
+                            <span id='ts-continue'><a href=""><button>Continue</button></a></span>
+                        </td>
+                    </tr>
+                </table></tr></table>
+<!--            <form>-->
+        </div>
+        <footer>
+            <div class="clk-footer">
+                <h3>&copy Tecnun. Escuela de Ingenieros. Universidad de Navarra. Paseo de Manuel Lardizabal, 13. 20018 Donostia-San Sebastian. Gipuzkoa (Spain). 
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tel. +34 943 21 98 77. Fax: +34 943 31 14 42. GPS: Latitud: 43.304654 Longitud: -2.009873.
+                </h3>
+                <div>
+                    <img id="logouni" src="logo.png"> 
+                </div>
+            </div>
+        </footer>
+	</body>
+</html>
