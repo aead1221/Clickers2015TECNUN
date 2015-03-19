@@ -21,7 +21,7 @@ public class requestNumbers extends HttpServlet {
 	public void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HttpSession session = req.getSession(true);
-		
+		int a;
 		resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
 		
