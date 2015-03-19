@@ -10,29 +10,5 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Tomcatv7"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/tomcat"/>
-	<classpathentry kind="lib" path="tomcatJARS/bin/bootstrap.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/bin/commons-daemon.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/bin/tomcat-juli.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/annotations-api.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/catalina-ant.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/catalina-ha.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/catalina-tribes.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/catalina.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/ecj-4.4.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/el-api.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/jasper-el.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/jasper.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/jsp-api.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/tomcat-api.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/tomcat-coyote.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/tomcat-dbcp.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/tomcat-i18n-es.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/tomcat-i18n-fr.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/tomcat-i18n-ja.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/tomcat-jdbc.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/tomcat-util.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/tomcat7-websocket.jar"/>
-	<classpathentry kind="lib" path="tomcatJARS/lib/websocket-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
