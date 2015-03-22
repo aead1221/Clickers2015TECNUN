@@ -23,6 +23,10 @@ a:hover {
 a:active {
     color: #000000;
 }
+
+input:hover {
+	border: 2px solid #990000;
+}
 		
 body {
 	font-family:helvetica;
@@ -47,6 +51,36 @@ header h2 {
 	color:#C0C0C0;
 	font-weight: normal;
 	padding-left:30px;
+}
+
+.clk-button {
+	padding: 2px 5px 2px 5px;
+	margin: 5px;
+	border: 1px solid #990000;
+	border-radius: 3px;
+}
+
+.clk-button:hover {
+	border: 2px solid #990000;
+}
+
+.clk-cb {
+	padding: 2px 5px 2px 5px;
+	margin: 5px;
+	border: 1px solid;
+	border-radius: 3px;
+}
+
+.clk-num {
+	width: 35px;
+}
+
+.clk-cb:hover {
+	border: 2px solid #990000;
+}
+
+.clk-button:active {
+	background-color: #990000;
 }
 
 #clk-header {
@@ -101,6 +135,14 @@ header h2 {
 	padding-top: 4px;
 }
 
+#clk-body {
+	width: inherit;
+	padding: 20px;
+	min-height: 592px;
+	background-color: rgb(229, 229, 229);
+	margin: 20px;
+}
+
 #clk-box {
 	background-color: white; 
 	font-size:18pt;
@@ -108,23 +150,29 @@ header h2 {
 	border: 3px solid #990000;
 	border-radius:10px; 
 	padding: 40px;
-	margin-top:100px;
+	margin-top:20px;
 	margin-left: auto;
 	margin-right: auto;
 	width: 30%;
 	height: 100%;
 }
 
+#login-body {
+	width: inherit;
+	padding: 150px;
+	min-height: 354px;
+	margin: 20px;
+}
+
 #login-box {
 	background-color: white;
-	font-weight: normal;
+	font-weight: bold;
 	border: 1px solid #333;
 	border-radius:10px;
-	margin-top:150px;
 	margin-left: auto;
 	margin-right: auto;
 	width: 20%;
-	height: 140px;
+	padding-bottom: 10px;
 }
 
 #login-box-header {
@@ -154,7 +202,7 @@ footer {
 	width: 100%;
 	height: 70px;
 	bottom:0;
-	position:fixed;
+	/* position:fixed; */
 }
 
 footer h3{
@@ -208,7 +256,6 @@ footer h3{
 	margin-left: 10%;
 	padding-top: 0%;
 	padding-bottom:3%;
-	font-family: "Homer Simpson", cursive; 
 	height:auto;
 	width:auto;
 }
@@ -241,7 +288,6 @@ footer h3{
 	margin-top:5%;
 	margin-left:8%;
 	margin-right:8%;
-	font-family: "Homer Simpson", cursive; 
 	color:black;
 }
 .Button-position{
@@ -265,14 +311,30 @@ footer h3{
 
 
 
-.clk-menu-st {
-			background-color: white;font-weight: normal;border: 1px solid #333;border-radius:10px;margin-top:2%;margin-left: 20%;margin-right: auto;width: 20%;height: 160px;
-		
+#menu-pic {
+	max-height: 180px;
+	width: 80%;
+	padding: 0% 10% 0% 10%;
 }
-.clk-links {
-			background-color: white;font-weight: normal;border: 1px solid #333;border-radius:10px;margin-top:-11%;margin-left: 55%;margin-right: auto;width: 20%;height: 160px;
-		
+
+#menu-content {
+	margin-left: auto;
+	margin-right: auto;
+	width: 400px;
 }
+
+.menu-box {
+			background-color: white;
+			font-weight: normal;
+			font-size: 12pt;
+			border: 1px solid #333;
+			border-radius:10px;
+			margin: 20px;
+			width: 300px;
+			padding-bottom: 25px;
+			height: auto;
+}
+
 .marksStudent {
 			background-color: white;font-weight: normal;border: 1px solid #333;border-radius:10px;margin-top:5%;margin-left: auto;margin-right: auto;width: 26%;height: 250px;
 		
@@ -359,19 +421,20 @@ footer h3{
 			border: 3px solid #990000;
 			border-radius:10px; 
 			padding: 40px;
-			margin-top:5%;
+			margin-top:20px;
 			margin-left: auto;
 			margin-right: auto;
 			width: 30%;
 			height: 95%;
 			}
-.SelectTestForEdit {
+#clk-title {
 			
-			color:black;
+			color:#990000;
 			font-weight: normal;
 			font-size:32pt;
-			padding-left:30px;
-			margin-left: 29%;
+			width: 500px;
+			margin-left: auto;
+			margin-right: auto;
 		}
 			
 .ViewResults-Title {

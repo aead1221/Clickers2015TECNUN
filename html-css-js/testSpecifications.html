@@ -32,73 +32,77 @@
                 </div>
             </a>
         </header>
-        <div id='clk-box'>
-            <h3 align='center'>Test Specifications</h3><br>
-            <table><tr><form action='PlantillaExamen'>
-                <table>
-                    <tr>
-                        <td>
-                            <input onclick='toggleTS()' type='radio' name='ts-ts'>
-                        </td>
-                        <td>
-                            <h6 align='left'>Test</h6>
-                        </td>
-                        <td>
-                            &nbsp&nbsp<input onclick='toggleTS()' type='radio' name='ts-ts'>
-                        </td>
-                        <td>
-                            <h6 align='left'>Survey</h6>
-                        </td>
-                        <td>
-                            &nbsp&nbsp&nbsp<input onclick="toggleP()" id='ts-cb' type='checkbox'>
-                        </td>
-                        <td>
-                            <h6 id='ts-p-text' align='left'>Penalized</h6>
-                        </td>
-                        <td>
-                            &nbsp&nbsp&nbsp<span id='ts-p'><input id='ts-p-in' type='text'>%</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan='7'>
-                            <br><h6 align='left'>Name for the test:</h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan='7'>
-                            <input type='text' name='nom'><br><br>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan='7'>
-                            <h6 align='left'>Number of questions:</h6>
-                        </td>    
-                    </tr>
-                    <tr>
-                        <td colspan='7'>
-                            <input type='text' name='num'><br><br>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan='7'>
-                            <h6 id='ts-ns' align='left'>Number of options for each question:</h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id='ts-ns-input' colspan='7'><input type='text' name='op'><br><br></td>
-                    </tr>
-                    </table>
-                    </form>   <!--remove the three, uncomment below-->
-                    </tr><tr>
-                    <table>
-                    <tr>
-                        <td colspan='7'>
-                            <span id='ts-continue'><a href=""><button>Continue</button></a></span>
-                        </td>
-                    </tr>
-                </table></tr></table>
-<!--            <form>-->
-        </div>
+		<div id='clk-body'>
+			<div id='clk-title'>
+				<h3 align='center'>Test Specifications</h3>
+			</div>
+			<div id='clk-box'>
+				<table><tr><form action='PlantillaExamen'>
+					<table>
+						<tr>
+							<td>
+								<input onclick='toggleTS()' type='radio' name='ts-ts'>
+							</td>
+							<td>
+								<h6 align='left'>Test</h6>
+							</td>
+							<td>
+								&nbsp&nbsp<input onclick='toggleTS()' type='radio' name='ts-ts'>
+							</td>
+							<td>
+								<h6 align='left'>Survey</h6>
+							</td>
+							<td>
+								&nbsp&nbsp&nbsp<input onclick="toggleP()" id='ts-cb' type='checkbox'>
+							</td>
+							<td>
+								<h6 id='ts-p-text' align='left'>Penalized</h6>
+							</td>
+							<td>
+								&nbsp&nbsp&nbsp<span id='ts-p'><input id='ts-p-in' class='clk-num' type='number' min='0' step='1' value='20'>%</span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan='7'>
+								<br><h6 align='left'>Name for the test:</h6>
+							</td>
+						</tr>
+						<tr>
+							<td colspan='7'>
+								<input type='text' name='nom'><br><br>
+							</td>
+						</tr>
+						<tr>
+							<td colspan='7'>
+								<h6 align='left'>Number of questions:</h6>
+							</td>    
+						</tr>
+						<tr>
+							<td colspan='7'>
+								<input class='clk-num' type='number' min='1' step='1' value='1' name='num'><br><br>
+							</td>
+						</tr>
+						<tr>
+							<td colspan='7'>
+								<h6 id='ts-ns' align='left'>Number of options for each question:</h6>
+							</td>
+						</tr>
+						<tr>
+							<td id='ts-ns-input' colspan='7'><input class='clk-num' type='number' min='2' step='1' value='2' name='op'><br><br></td>
+						</tr>
+						</table>
+						</form>   <!--remove the three, uncomment below-->
+						</tr><tr>
+						<table>
+						<tr>
+							<td colspan='7'>
+								<span id='ts-continue'><a href=""><button class='clk-button'>Continue</button></a></span>
+							</td>
+						</tr>
+					</table></tr></table>
+	<!--            <form>-->
+			</div>
+		</div>
         <footer>
             <div class="clk-footer">
                 <h3>&copy Tecnun. Escuela de Ingenieros. Universidad de Navarra. Paseo de Manuel Lardizabal, 13. 20018 Donostia-San Sebastian. Gipuzkoa (Spain). 

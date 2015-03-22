@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?> 
-<web-app> 
+<web-app>
+	<servlet> 
+		<servlet-name>takeTest</servlet-name> 
+		<servlet-class>org.iso.takeTest</servlet-class> 
+	</servlet> 
 	<servlet> 
 		<servlet-name>initTest</servlet-name> 
 		<servlet-class>org.iso.initTest</servlet-class> 
@@ -79,5 +83,9 @@
 	<servlet-mapping> 
 		<servlet-name>initTest</servlet-name> 
 		<url-pattern>/initTest</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>takeTest</servlet-name> 
+		<url-pattern>/takeTest</url-pattern> 
 	</servlet-mapping> 
 </web-app>
