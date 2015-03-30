@@ -33,5 +33,6 @@
 	<classpathentry kind="lib" path="tomcatJARS/lib/tomcat-util.jar"/>
 	<classpathentry kind="lib" path="tomcatJARS/lib/tomcat7-websocket.jar"/>
 	<classpathentry kind="lib" path="tomcatJARS/lib/websocket-api.jar"/>
+	<classpathentry kind="lib" path="iTextPDF/lib/itextpdf-5.5.5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

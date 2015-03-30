@@ -24,8 +24,14 @@ public class takeTest extends HttpServlet{
 		
 		HttpSession session = request.getSession(true);
 		
+		PrintWriter out = response.getWriter();
+		
 		String user = "Antonio";
 		clickers.printTop(response, user);
+		
+		out.println("<div id='clk-box'>");
+		out.println("<br><p align='center'><button class='clk-button' onclick='openReport()'>Download</button></p>");
+		out.println("</div>");
 		
 		clickers.printBottom(response);
 	}

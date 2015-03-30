@@ -1,0 +1,463 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+a {
+	text-decoration:none;
+}
+
+a:link {
+    color: #000000;
+}
+
+a:visited {
+    color: #000000;
+}
+
+#clk-box a:hover {
+    color: #990000;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #000000;
+}
+
+input:hover {
+	border: 2px solid #990000;
+}
+		
+body {
+	font-family:helvetica;
+	font-size: 14px;
+	font-weight:normal;
+	background: url('bg.png') no-repeat top left;
+	background-attachment: fixed;
+}
+	 
+header {
+	top: 0px;
+	width: 100%;
+}
+		
+header h1 {
+	color:white;
+	font-size: 64pt;
+	font-weight: lighter;
+   }
+		  
+header h2 {
+	color:#C0C0C0;
+	font-weight: normal;
+	padding-left:30px;
+}
+
+.clk-button {
+	padding: 2px 5px 2px 5px;
+	margin: 5px;
+	border: 1px solid #990000;
+	border-radius: 3px;
+}
+
+.clk-button:hover {
+	border: 2px solid #990000;
+}
+
+.clk-cb {
+	padding: 2px 5px 2px 5px;
+	margin: 5px;
+	border: 1px solid;
+	border-radius: 3px;
+}
+
+.clk-num {
+	width: 35px;
+}
+
+.clk-cb:hover {
+	border: 2px solid #990000;
+}
+
+.clk-button:active {
+	background-color: #990000;
+}
+
+#clk-header {
+	background-color:#990000;
+	padding: 15px 15px 15px 30px;
+}
+
+
+#clk-user-bar {
+	display:block;
+	width: 100%;
+	height: 25px;
+	font-size: 18px;
+	font-weight: bold;
+	background-color:#6D0000;
+}
+
+#clk-user-buttons {
+	position: absolute;
+	right: 30px;
+	top: 157px;
+	display: inline-block;
+	background:white;
+	height: 20px;
+	margin-left:50px;
+}
+
+#clk-user-bar span {
+	display:inline;
+	background-color:#6D0000;
+	margin-left: 1px;
+	height: inherit;
+	padding: 3px 5px 0px 5px;
+	width:30px;
+}
+
+#clk-user-view {
+	color: #D5D5D5;
+}
+
+#clk-user-icon {
+	height: 17px;
+}
+
+#clk-user-logout {
+	color: #D0D0D0;
+	margin-right: -5px;
+}
+
+#clk-menu-bar {
+	background-color: #000000;
+	color: white;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	padding-top: 4px;
+}
+
+#clk-body {
+	width: inherit;
+	padding: 20px;
+	min-height: 540px;
+	background-color: rgb(229, 229, 229);
+	margin: 20px;
+}
+
+#clk-box {
+	background-color: white; 
+	font-size:18pt;
+	font-weight: normal;
+	border: 3px solid #990000;
+	border-radius:10px; 
+	padding: 40px;
+	margin-top:20px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 30%;
+	height: 100%;
+}
+
+#login-body {
+	width: inherit;
+	padding: 150px;
+	min-height: 354px;
+	margin: 20px;
+}
+
+#login-box {
+	background-color: white;
+	font-weight: bold;
+	border: 1px solid #333;
+	border-radius:10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 20%;
+	padding-bottom: 10px;
+}
+
+#login-box-header {
+	background-color: #990000;
+	color: white;
+	font-size:18pt;
+	font-weight: lighter;
+	height:30px;
+	border-top-left-radius:8px;
+	border-top-right-radius: 8px;
+	padding-left: 10px;
+	padding-top: 5px;
+}
+
+#login-box .login-fields {
+	width: 80%;
+}
+
+.login-grid {
+	margin-top:15px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+footer {
+	background-color:#990000;
+	width: 100%;
+	height: 70px;
+	bottom:0;
+	/* position:fixed; */
+}
+
+footer h3{
+	color:#C0C0C0;
+	font-weight: normal;
+	padding-left:30px;
+	padding-top:20px;
+}
+
+#logouni {
+	float: right;
+	margin-right: 2em;
+	margin-top: -4em;
+	height: 70px;
+}
+
+#ts-p-in {
+    width:30px;
+}
+
+#ts-p {
+    font-size:12px;
+}
+
+
+
+/* Maria */
+
+
+
+.menu-header {
+	background-color: #990000;
+	color: white;
+	font-size:18pt;
+	font-weight: lighter;
+	height:30px;
+	border-top-left-radius:8px;
+	border-top-right-radius: 8px;
+	padding-left: 10px;
+	padding-top: 5px;
+}
+.clk-admin {
+	background-color: white;
+	color: black;
+	font-weight: normal;
+	border: 1px solid #333;
+	border-radius:10px;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-right: 15%;
+	margin-left: 10%;
+	padding-top: 0%;
+	padding-bottom:3%;
+	height:auto;
+	width:auto;
+}
+.menu-header-admin {
+	background-color: #990000;
+	color: white;
+	font-size:18pt;
+	font-weight: lighter;
+	height:auto%;
+	border-top-left-radius:8px;
+	border-top-right-radius: 8px;
+	margin-bottom:3%;
+	text-align:center;
+	padding-left:10%
+}
+.clk-menu {
+	background-color: white;
+	font-weight: normal;
+	border: 1px solid #333;
+	border-radius:10px;
+	margin-top:5%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 20%;
+	height: 160px;
+
+}
+
+.content-adm{
+	margin-top:5%;
+	margin-left:8%;
+	margin-right:8%;
+	color:black;
+}
+.Button-position{
+	text-align: center;
+	margin-right:0%;
+}
+
+#user {
+	float: right;
+	margin:4%;
+} 
+
+#Imgadmin {
+	margin-top:5%;
+	text-align: center;
+}
+
+
+
+/* Blanca */
+
+
+
+#menu-pic {
+	max-height: 180px;
+	width: 80%;
+	padding: 0% 10% 0% 10%;
+}
+
+#menu-content {
+	margin-left: auto;
+	margin-right: auto;
+	width: 400px;
+}
+
+.menu-box {
+			background-color: white;
+			font-weight: normal;
+			font-size: 12pt;
+			border: 1px solid #333;
+			border-radius:10px;
+			margin: 20px;
+			width: 300px;
+			padding-bottom: 25px;
+			height: auto;
+}
+
+.marksStudent {
+			background-color: white;font-weight: normal;border: 1px solid #333;border-radius:10px;margin-top:5%;margin-left: auto;margin-right: auto;width: 26%;height: 250px;
+		
+}
+.marksTeacher {
+			background-color: white;font-weight: normal;border: 1px solid #333;border-radius:10px;margin-top:5%;margin-left: auto;margin-right: auto;width: 45%;height: 300px;
+		
+}
+#statistics {
+			background-color: white;font-weight: normal;border: 1px solid #333;border-radius:10px;margin-top:2%%;margin-left: 242px;margin-right: auto;width: 65%;height: 304px;
+}
+.menu-header-st{
+			background-color: #990000;color: white;font-size:18pt;font-weight: lighter;height:30px;border-top-left-radius:8px;border-top-right-radius: 8px;padding-left: 10px;padding-top: 5px;
+}
+.clk-subtitle-st {
+			background-color: white;color: black;font-size:14pt;font-weight: bold;height:30px;border-top-left-radius:8px;border-top-right-radius: 8px;padding-left: 10px;padding-top: 5px;
+}
+.clk-content-st {
+			background-color: white;color: black;font-size:12pt;font-weight: bold;height:30px;border-top-left-radius:8px;border-top-right-radius: 8px;padding-left: 10px;padding-top: 5px;
+}
+.marksStudent-header {
+			background-color: white;color: black;font-size:22pt;font-weight: bold;height:30px;border-top-left-radius:8px;border-top-right-radius: 8px;padding-left: 10px;padding-top: 5px;
+}
+.marksTeacher-header {
+			background-color: white;color: black;font-size:22pt;font-weight: bold;height:30px;border-top-left-radius:8px;border-top-right-radius: 8px;padding-left: 10px;padding-top: 5px;
+}
+
+
+
+/* Andres */
+
+
+
+.clk-menu-teacher {
+			background-color: white;
+			font-weight: normal;
+			border: 1px solid #333;
+			border-radius:10px;
+			margin-top:2%;
+			margin-left: 20%;
+			margin-right: auto;
+			width: 20%;
+			height: 160px;
+		
+		}
+.clk-links-teacher {
+			background-color: white;
+			font-weight: normal;
+			border: 1px solid #333;
+			border-radius:10px;
+			margin-top:-11%;
+			margin-left: 55%;
+			margin-right: auto;
+			width: 20%;
+			height: 160px;
+		
+		}
+.clk-MenuHeader-teacher{
+			background-color: #990000;
+			color: white;
+			font-size:18pt;
+			font-weight: lighter;
+			height:30px;
+			border-top-left-radius:8px;
+			border-top-right-radius: 8px;
+			padding-left: 10px;
+			padding-top: 5px;
+		}
+.ViewResults-Tests {
+			background-color: white;
+			font-weight: normal;
+			border: 1px solid #333;
+			border-radius:10px;
+			margin-top:5%;
+			margin-left: auto;
+			margin-right: auto;
+			width: 15%;
+			height: 120px;
+		}
+.TestContentbox-Teacher {
+			background-color: white; 
+			font-size:18pt;
+			font-weight: normal;
+			border: 3px solid #990000;
+			border-radius:10px; 
+			padding: 40px;
+			margin-top:20px;
+			margin-left: auto;
+			margin-right: auto;
+			width: 30%;
+			height: 95%;
+			}
+#clk-title {
+			
+			color:#990000;
+			font-weight: normal;
+			font-size:32pt;
+			width: 500px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+			
+.ViewResults-Title {
+			
+			color:black;
+			font-weight: normal;
+			font-size:32pt;
+			padding-left:30px;
+			margin-left: 35%;
+		}
+.menu-header {
+			background-color: #990000;
+			color: white;
+			font-size:18pt;
+			font-weight: lighter;
+			height:30px;
+			border-top-left-radius:8px;
+			border-top-right-radius: 8px;
+			padding-left: 10px;
+			padding-top: 5px;
+		}
+			

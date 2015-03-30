@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?> 
 <web-app>
 	<servlet> 
+		<servlet-name>generateReport</servlet-name> 
+		<servlet-class>org.iso.generateReport</servlet-class> 
+	</servlet> 
+	<servlet> 
 		<servlet-name>takeTest</servlet-name> 
 		<servlet-class>org.iso.takeTest</servlet-class> 
 	</servlet> 
@@ -107,4 +111,8 @@
 		<servlet-name>takeTest</servlet-name> 
 		<url-pattern>/takeTest</url-pattern> 
 	</servlet-mapping> 
+	<servlet-mapping> 
+		<servlet-name>generateReport</servlet-name> 
+		<url-pattern>/generateReport</url-pattern> 
+	</servlet-mapping>
 </web-app>

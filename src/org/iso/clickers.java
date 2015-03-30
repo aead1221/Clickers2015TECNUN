@@ -17,6 +17,7 @@ public class clickers {
 		htmlStr += "	<head>";
 		htmlStr += "		<title>Clickers - Test</title>";
 		htmlStr += "        <link rel=\"stylesheet\" type=\"text/css\" href=\"css/clickers.css\">";
+		htmlStr += "        <script type=\"text/javascript\" src=\"javascript/clickers.js\"></script>";
 		htmlStr += "	</head>";
 		htmlStr += "	<body>";
 		htmlStr += "        <header>";

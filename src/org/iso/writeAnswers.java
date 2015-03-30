@@ -28,30 +28,34 @@ public class writeAnswers extends HttpServlet{
 		String nom = req.getParameter("nom");
 		String sresp = "" + req.getParameter("resp") + "";
 		
+		if (sresp.equals(null) || sresp.equals("")) {
+			sresp = "0";
+		}
+		
 		String test_id = "";
 		int test_nq = 0;
 		
-		String sql1 = "Select Id_Tests, Name, NumberOfQuestions from Tests where Name ='" + nom + "'";
+		String sql1 = "Select IdTest, TestName, NoOfQuestions from TestsAA where TestName ='" + nom + "'";
 		try{
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql1);
 			if (rs.next()) {
-				test_id = rs.getString("Id_Tests");
-				test_nq = Integer.parseInt(rs.getString("NumberOfQuestions"));
+				test_id = rs.getString("IdTest");
+				test_nq = Integer.parseInt(rs.getString("NoOfQuestions"));
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 			System.out.println("Resulset: " + sql1 + " Exception: " + e);
 		}
 		
-		/*String sql2 = "Insert into [Student-Answer] (Id_Student, Id_Test, Id_Question, StudentAnswer) Values ('" + student_id + "', '" + test_id + "', '" + (num+1) +"', '" + sresp + "')";
+		String sql2 = "Insert into StudentAnswerAA (IdStudent, IdTest, IdQuestion, AnswerS) Values ('" + student_id + "', '" + test_id + "', '" + (num+1) +"', '" + sresp + "')";
 		try{
 			Statement statement = connection.createStatement();
 			statement.executeUpdate(sql2);						//This Update is meant to write answers on de DB
 		} catch(SQLException e) {							//but has no value without the Update on the initTest servlet
 			e.printStackTrace();							//because of an enforced relation
 			System.out.println("Resulset: " + sql2 + " Exception: " + e);
-		}*/
+		}
 		
 		ServletContext sc = getServletContext();
 		if (num != test_nq - 1) {
