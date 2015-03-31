@@ -5,7 +5,7 @@ import java.util.*;
 import javax.servlet.*; 
 import javax.servlet.http.*;
  
-public class testReport extends HttpServlet{ 
+public class testReportS extends HttpServlet{ 
 	Connection connection;
     
 	public void init(ServletConfig config) throws ServletException {
@@ -31,7 +31,7 @@ public class testReport extends HttpServlet{
 		
 		//String path = System.getProperty("user.dir").toString();
 		out.println("<div id='clk-box'>");
-		out.println("<h3>Your test report has been generated and is ready for download.</h3><br><p align='center'><button class='clk-button' onclick='openReport()'>Download</button></p>");
+		out.println("<h3>Your survey report has been generated and is ready for download.</h3><br><p align='center'><button class='clk-button' onclick='openReportS()'>Download</button></p>");
 		out.println("</div>");
 		
 		clickers.printBottom(response);

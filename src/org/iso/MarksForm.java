@@ -6,14 +6,15 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class CalificacionesPrueba extends HttpServlet {
+public class MarksForm extends HttpServlet {
 
 	Connection conn = null;
 	String nombre=null;
 	String apellido=null;
 	String apellido1=null;
-	String TestId=null;
 	String TestName=null;
+	String TestId=null;
+	
 	
 	String sql1 =null;
 	
@@ -69,8 +70,8 @@ public class CalificacionesPrueba extends HttpServlet {
 
 		HttpSession session = req.getSession(true);
 		
-		String user = "Blanca";
-		clickers.printTop(resp, user);
+		
+		clickers.printTop(resp, session.getAttribute("name").toString());
 
 		
 			out.println("<div id='clk-title'>");
@@ -81,31 +82,8 @@ public class CalificacionesPrueba extends HttpServlet {
 			
 			
 			out.println("<table style='padding-left:11%; padding-top:5%'>");
-			out.println("<div>");
-			out.println("<tr>");
-			out.println("<td>");
-			out.println("<select  class='clk-cb' name='Order By'>");
-			out.println("<option value='apellido'> Last Name </option>");
-			out.println("<option value='mark'> Marks </option>");
-			out.println("</select>");
-			out.println("</td>");
-			out.println("<td>");
-			out.println("<form method='get' action='statistic.html'>");
-			out.println("<input class='clk-button' type='submit' value='Statistics'>");
-			out.println("</form>");
-			out.println("</td>");
-			out.println("<td>");
-			out.println("<input class='clk-button' type='submit' value='Download report'>");
-			out.println("</td>");
-			out.println("<td>");
-			out.println("<a href='MarksForm?TestId="+TestId+"&TestName="+TestName+"'><input class='clk-button' type='submit' value='UploadMarks'></a>");
-			out.println("</td>");
-			out.println("</tr>");
-			out.println("</div>");
-			
-						//out.println("<button type='button' onclick='<a href='MarksForm?TestId="+TestId+"&TestName="+TestName+"'></a>Upload Marks</button>");
-
 		
+			out.println("<form method='get' action='UploadMarks'> ");
 			
 			out.println("<tr class='clk-subtitle-st'>");
 			out.println("<td><label><p align='left'><h3><U> USER </U></h3></p></label></td>");
@@ -117,13 +95,8 @@ public class CalificacionesPrueba extends HttpServlet {
 			out.println("</div>");
 			
 			
-			String sql1="SELECT  FirstName, LastName1, LastName2, Mark from StudentsBF, TestStudentBF where Id_Student=Id and Id_Test="+TestId+"";
-
-				
 			
-			
-			
-			
+			String sql1="SELECT  FirstName, LastName1, LastName2,Id_Student from StudentsBF,TestStudentBF where Id_Student=Id and Id_Test="+TestId+"";
 			
 			
 					System.out.println(sql1);
@@ -134,31 +107,37 @@ public class CalificacionesPrueba extends HttpServlet {
 							nombre=rs.getString("FirstName");
 							apellido=rs.getString("LastName1");
 							apellido1=rs.getString("LastName2");
-							nota=rs.getString("Mark");
+							
+							
+							out.println("");
 							out.println("<tr class='clk-content-st'>");
 							out.println("<td><label>" + nombre +" "+ apellido+" "+ apellido1+"</label></td>");
 							out.println("<td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>");
-							out.println("<td><label><p align='center'>" + nota + "</p></label></td>");
+							out.println("<td><label><p align='center'><input class='clk-button' type='text' name="+nombre+" value=''></p></label></td>");
 							out.println("<td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>");
-							
 							out.println("</tr>");
 						}
-							
+						
 						
 						
 
 					} catch(SQLException e) {
 						e.printStackTrace();
 						System.out.println("Resulset: " + sql1 + " Exception: " + e);
-						out.println("<tr>");
-						out.println("<td><input class='clk-button' type='submit' value='Statistics'></td>");
-						out.println("</tr>");
+						
 					}
 			
+			// Codigo antiguo // out.println("<td><label><p align='center'><input class='clk-button' type='submit' value='UploadMarks'></p></label></td>");
+			out.println("<td><label><p align='center'><input class='clk-button' type='submit' value='UploadMarks'  onclick='inicio()'></p></label></td>");
 			
+			
+			out.println("<input type='hidden' name='TestId' value="+TestId+">");
+			//out.println("<input type='hidden' name='TestId' value="+TestName+">");
+			//out.println("<a href=javascript('Actualizar.html')>Enlace</a>");
+			out.println("</form>");
 			out.println("</TABLE>");
 			out.println("<BR>");
-			out.println("<BR><a href=\"menuTeacher.html\"><input class='clk-button' type='submit' value='Back To Menu'></a></div>");
+			out.println("<BR><a href=\"menuTeacher.html\"><input class='clk-button' type='submit' value='Back To Menu'></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size='2'>* Acuerdese de rellenar todos los campos</font></div>");
 			clickers.printBottom(resp);
 
 			out.flush();

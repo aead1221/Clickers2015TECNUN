@@ -25,7 +25,7 @@ public class autoCorrect extends HttpServlet{
 		
 		HttpSession session = request.getSession(true);
 		
-		String user_id = session.getAttribute("user_id").toString();
+		String user_id = session.getAttribute("user").toString();
 		
 		String nom = request.getParameter("nom");
 		String tt = request.getParameter("tt");

@@ -5,7 +5,7 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class requestNumbers extends HttpServlet {
+public class requestSurveySpecifications extends HttpServlet {
 	Connection connection;
 	
 	 public void init(ServletConfig config) throws ServletException {
@@ -21,6 +21,9 @@ public class requestNumbers extends HttpServlet {
 	public void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HttpSession session = req.getSession(true);
+		
+		
+		
 		resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
 		
@@ -37,15 +40,15 @@ public class requestNumbers extends HttpServlet {
 		out.println(".my-header {padding: 30px}");
 		out.println(".my-box {background-color: white; font-size:18pt;font-weight: normal;border: 3px solid #990000;border-radius:10px; padding: 40px;margin-top:20%;margin-left: auto;margin-right: auto;width: 30%;height: 100%;}");
 		out.println("</style>");
-		out.println("<title>Test Specifications</title>");
+		out.println("<title>Survey Specifications</title>");
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<header><div class='my-header'><h1>Clickers</h1><h2>TECNUN's online test taking platform</h2></div></header>");
 		out.println("<div class='my-box'>");
-		out.println("<h3 align='center'>Test Specifications</h3><br><br>");
-		out.println("<FORM Action='PlantillaExamen'>");
+		out.println("<h3 align='center'>Survey Specifications</h3><br><br>");
+		out.println("<FORM Action='SurveyTemplate'>");
 		out.println("<table><tr>");
-		out.println("<h6 align='left'>Name for the test:</h6>");
+		out.println("<h6 align='left'>Name for the survey:</h6>");
 		out.println("</tr><tr>");
 		out.println("<input type='text' name='nom'><br><br>");
 		out.println("</tr><tr>");
@@ -57,10 +60,14 @@ public class requestNumbers extends HttpServlet {
 		out.println("</tr><tr>");
 		out.println("<input type='text' name='op'><br><br>");
 		out.println("</tr><tr>");
+		out.println("<h6 align='left'>Subject Id:</h6>");
+		out.println("</tr><tr>");
+		out.println("<input type='text' name='subjectid'><br><br>");
+		out.println("</tr><tr>");
 		out.println("<INPUT type='submit' value='Continue'>");
 		out.println("</tr></table></form>");
 		out.println("</FORM>");
-		out.println("<BR><h6><a href='menu'>Back to menu</a></h6>");
+		out.println("<BR><h6><a href='menuTeacher'>Back to menu</a></h6>");
 		out.println("</div><footer>&copy UN 2015</footer></body></html>");
 	} 
 }

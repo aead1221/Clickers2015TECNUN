@@ -22,7 +22,7 @@ public class initTest extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { 
 	
 		HttpSession session = req.getSession(true);
-		String student_id = "" + session.getAttribute("user_id") + "";
+		String student_id = "" + session.getAttribute("user") + "";
 		
 		String nom = req.getParameter("nom");
 		String tt = req.getParameter("tt");

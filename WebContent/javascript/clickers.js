@@ -47,14 +47,23 @@ function drawPieChart() {
 	chart.draw(data, options);
 }
 
-function openReport(path) {
-	var win = window.open(path +'/testReport');
+function openReport() {
+	var path = 'testReport.pdf';
+	var win = window.open(path);
 	if(win){
-	    //Browser has allowed it to be opened
 	    win.focus();
 	}else{
-	    //Broswer has blocked it
-	    alert('Please allow popups for this site');
+	    alert('Please allow popups for this site', 'window');
+	}
+}
+
+function openReportS() {
+	var path = 'surveyReport.pdf';
+	var win = window.open(path);
+	if(win){
+	    win.focus();
+	}else{
+	    alert('Please allow popups for this site', 'window');
 	}
 }
 

@@ -32,7 +32,7 @@ public class testMenu extends HttpServlet {
 			System.out.println("alumnosExcepcion");    
 		}
 
-		clickers.printTop(resp, "user");
+		clickers.printTop(resp, session.getAttribute("name").toString());
 		
 		String htmlStr="";
 		htmlStr += "<div id=\"clk-title\">";

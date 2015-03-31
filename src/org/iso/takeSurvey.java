@@ -65,7 +65,7 @@ public class takeSurvey extends HttpServlet{
 		}
 		
 		PrintWriter out = response.getWriter(); 
-		clickers.printTop(response, session.getAttribute("user_id").toString());
+		clickers.printTop(response, session.getAttribute("name").toString());
 		String htmlStr="";
 		htmlStr += "<div id='clk-title'>";
 		htmlStr += "				<h3 align='center'>" + nom + "</h3>";

@@ -26,7 +26,7 @@ public class statsSurvey extends HttpServlet{
 		
 		PrintWriter out = response.getWriter();
 		
-		String user = "Antonio";
+		String user = session.getAttribute("name").toString();
 		clickers.printTop(response, user);
 		
 		String htmlStr = "";

@@ -12,7 +12,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.Font.*;
 import com.itextpdf.text.pdf.*;
 
-public class generateReport extends HttpServlet{ 
+public class generateReportS extends HttpServlet{ 
 	Connection connection;
     
 	public void init(ServletConfig config) throws ServletException {
@@ -34,8 +34,9 @@ public class generateReport extends HttpServlet{
 		Document doc = new Document();
 		doc.setPageSize(PageSize.A4);
 		
-		int test_id = 6;
+		int test_id = 7;
 		String test_name = "";
+		int test_nq = 0;
 		
 		Font [] fonts = {
 			new Font(),
@@ -46,7 +47,7 @@ public class generateReport extends HttpServlet{
 		};
 		
 		try {
-			PdfWriter.getInstance(doc, new FileOutputStream("C:/Users/Antonio/Documents/eclipse_ws/Clickers/testReport.pdf"));
+			PdfWriter.getInstance(doc, new FileOutputStream(System.getProperty("user.home") + "/surveyReport.pdf"));
 			
 			doc.open();
 			
@@ -57,12 +58,13 @@ public class generateReport extends HttpServlet{
 			
 			doc.add(new Paragraph("Report Generation date: " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()) + "", fonts[3]));
 			
-			String sql1 = "Select TestsAA.IdTest, TestsAA.TestName from TestsAA where TestsAA.IdTest=" + test_id + "";
+			String sql1 = "Select TestsAA.IdTest, TestsAA.TestName, TestsAA.NoOfQuestions from TestsAA where TestsAA.IdTest=" + test_id + "";
 			try {
 				Statement statement = connection.createStatement();
 				ResultSet rs = statement.executeQuery(sql1);
 				if (rs.next()) {
 					test_name = rs.getString("TestName");
+					test_nq = Integer.parseInt(rs.getString("NoOfQuestions").toString());
 				}
 			} catch(SQLException e) {
 				e.printStackTrace();
@@ -74,22 +76,35 @@ public class generateReport extends HttpServlet{
 			doc.add(Chunk.NEWLINE);
 			
 			PdfPTable t = new PdfPTable(2);
-			t.addCell(new Paragraph("Field", fonts[4]));
-			t.addCell(new Paragraph("Global Evaluation", fonts[4]));
+			t.addCell(new Paragraph("Student name", fonts[4]));
+			t.addCell(new Paragraph("Mark", fonts[4]));
 			
-			String sql2 = "SELECT DISTINCT UsersAA.Name, TestStudentAA.IdTest, TestStudentAA.Mark FROM TestStudentAA INNER JOIN UsersAA ON (UsersAA.IdStudent = TestStudentAA.IdStudent) WHERE TestStudentAA.IdTest=" + test_id + "";
-			try {
-				Statement statement = connection.createStatement();
-				ResultSet rs = statement.executeQuery(sql2);
-				while (rs.next()) {
-					t.addCell(rs.getString("Name"));
-					t.addCell(rs.getString("Mark"));
-				}
-			} catch(SQLException e) {
-				e.printStackTrace();
-				System.out.println("Resulset: " + sql2 + " Exception: " + e);
-			}
+			for (int i=1; i<=test_nq; i++) {
+				String sql2 = "SELECT IdTest, IdQuestion, AnswerS FROM StudentAnswerAA WHERE IdTest=" + test_id + " AND IdQuestion=" + i + "";
 				
+				int sum = 0;
+				int num = 0;
+				float resul = 0;
+				
+				try {
+					Statement statement = connection.createStatement();
+					ResultSet rs = statement.executeQuery(sql2);
+					while (rs.next()) {
+						sum += Integer.parseInt(rs.getString("AnswerS").toString());
+						num++;
+					}
+					
+					resul = ((float)sum)/((float)num);
+					
+					t.addCell("Question " + i + ":");
+					t.addCell("" + resul);
+					
+				} catch(SQLException e) {
+					e.printStackTrace();
+					System.out.println("Resulset: " + sql2 + " Exception: " + e);
+				}
+			}
+			
 			doc.add(t);
 			
 			Image im = Image.getInstance("http://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Tecnun_logo.jpg/640px-Tecnun_logo.jpg");

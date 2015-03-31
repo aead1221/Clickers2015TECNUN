@@ -25,8 +25,8 @@ public class backToMenu extends HttpServlet{
 		
 		HttpSession session = request.getSession(true);
 		
-		//String user_id = session.getAttribute("user_id").toString();
-		String user_id = "5";
+		String user_id = session.getAttribute("user").toString();
+
 		String user_type = "";
 		
 		String sql1 = "SELECT IdUser, UserType FROM Users WHERE IdUser='" + user_id + "'";
@@ -43,7 +43,7 @@ public class backToMenu extends HttpServlet{
 		
 		ServletContext sc = getServletContext();
 		if (user_type.equals("1")) {
-			RequestDispatcher rd = sc.getRequestDispatcher("/menuAdmin");
+			RequestDispatcher rd = sc.getRequestDispatcher("/MenuAdmin");
 			rd.forward(request , response);
 		} else if (user_type.equals("2")) {
 			RequestDispatcher rd = sc.getRequestDispatcher("/menuTeacher");

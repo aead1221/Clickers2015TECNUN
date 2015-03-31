@@ -9,6 +9,7 @@ import javax.servlet.http.*;
 public class clickers {
 	public static void printTop(HttpServletResponse response, String user) throws IOException {
 		
+		
 		PrintWriter out = response.getWriter();
 		
 		String htmlStr="";
@@ -33,20 +34,20 @@ public class clickers {
 		htmlStr += "            </div>";
 		htmlStr += "            <div id=\"clk-user-bar\">";
 		htmlStr += "                <div id=\"clk-user-buttons\">";
-		htmlStr += "                    <a href=\"UserPersonalInfo.html\">";
+		htmlStr += "                    <a href=\"UserPersonalInf\">";
 		htmlStr += "                        <span id=\"clk-user-view\">";
 		htmlStr += "                            <img id=\"clk-user-icon\" src=\"images/user-icon.png\">";
 		htmlStr += "                            " + user + "";
 		htmlStr += "                        </span>";
 		htmlStr += "                    </a>";
-		htmlStr += "                    <a href=\"Login.html\">";
+		htmlStr += "                    <a href=\"logout\">";
 		htmlStr += "                        <span id=\"clk-user-logout\">";
 		htmlStr += "                            Logout";
 		htmlStr += "                        </span>";
 		htmlStr += "                    </a>";
 		htmlStr += "                </div>";
 		htmlStr += "            </div>";
-		htmlStr += "            <a href='menu'>";
+		htmlStr += "            <a href='backToMenu'>";
 		htmlStr += "                <div id=\"clk-menu-bar\">";
 		htmlStr += "                    B A C K   &nbspT O&nbsp   M E N U";
 		htmlStr += "                </div>";

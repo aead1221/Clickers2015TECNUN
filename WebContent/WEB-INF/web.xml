@@ -1,5 +1,101 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <servlet> 
+		<servlet-name>generateReportS</servlet-name> 
+		<servlet-class>org.iso.generateReportS</servlet-class> 
+	</servlet>
+    <servlet> 
+		<servlet-name>UploadMarks</servlet-name> 
+		<servlet-class>org.iso.UploadMarks</servlet-class> 
+	</servlet>
+	  <servlet> 
+		<servlet-name>UploadMarksSurvey</servlet-name> 
+		<servlet-class>org.iso.UploadMarksSurvey</servlet-class> 
+	</servlet>
+  <servlet> 
+		<servlet-name>MarksFormSurvey</servlet-name> 
+		<servlet-class>org.iso.MarksFormSurvey</servlet-class> 
+	</servlet>
+	<servlet>
+		<servlet-name>MarksForm</servlet-name> 
+		<servlet-class>org.iso.MarksForm</servlet-class> 
+	</servlet>
+  <servlet> 
+		<servlet-name>ViewResultsTeacher</servlet-name> 
+		<servlet-class>org.iso.ViewResultsTeacher</servlet-class> 
+	</servlet>
+  <servlet> 
+		<servlet-name>logout</servlet-name> 
+		<servlet-class>org.iso.logout</servlet-class> 
+	</servlet>
+  <servlet> 
+		<servlet-name>disable</servlet-name> 
+		<servlet-class>org.iso.disable</servlet-class> 
+	</servlet>
+  <servlet> 
+		<servlet-name>UserPersonalInf</servlet-name> 
+		<servlet-class>org.iso.UserPersonalInf</servlet-class> 
+	</servlet>
+  <servlet> 
+		<servlet-name>UpdateUser</servlet-name> 
+		<servlet-class>org.iso.UpdateUser</servlet-class> 
+	</servlet>
+  <servlet> 
+		<servlet-name>EditUser</servlet-name> 
+		<servlet-class>org.iso.EditUser</servlet-class> 
+	</servlet>
+  <servlet> 
+		<servlet-name>newUser</servlet-name> 
+		<servlet-class>org.iso.newUser</servlet-class> 
+	</servlet>
+  <servlet> 
+		<servlet-name>SaveTestData</servlet-name> 
+		<servlet-class>org.iso.SaveTestData</servlet-class> 
+	</servlet>
+	<servlet> 
+		<servlet-name>UpdateSurveyChanges</servlet-name> 
+		<servlet-class>org.iso.UpdateSurveyChanges</servlet-class> 
+	</servlet>
+	<servlet> 
+		<servlet-name>EditSurveyContent</servlet-name> 
+		<servlet-class>org.iso.EditSurveyContent</servlet-class> 
+	</servlet>
+	<servlet> 
+		<servlet-name>ViewMarksStudents</servlet-name> 
+		<servlet-class>org.iso.ViewMarksStudents</servlet-class> 
+	</servlet>
+	<servlet> 
+		<servlet-name>SaveSurveyData</servlet-name> 
+		<servlet-class>org.iso.SaveSurveyData</servlet-class> 
+	</servlet>
+	<servlet> 
+		<servlet-name>TestTemplate</servlet-name> 
+		<servlet-class>org.iso.TestTemplate</servlet-class> 
+	</servlet>
+	<servlet> 
+		<servlet-name>requestTestSpecifications</servlet-name> 
+		<servlet-class>org.iso.requestTestSpecifications</servlet-class> 
+	</servlet>
+	<servlet> 
+		<servlet-name>requestSurveySpecifications</servlet-name> 
+		<servlet-class>org.iso.requestSurveySpecifications</servlet-class> 
+	</servlet>
+	<servlet> 
+		<servlet-name>SurveyTemplate</servlet-name> 
+		<servlet-class>org.iso.SurveyTemplate</servlet-class> 
+	</servlet>
+	<servlet> 
+		<servlet-name>SelectForEdit</servlet-name> 
+		<servlet-class>org.iso.SelectForEdit</servlet-class> 
+	</servlet>
+	<servlet> 
+		<servlet-name>EditTestContent</servlet-name> 
+		<servlet-class>org.iso.EditTestContent</servlet-class> 
+	</servlet>
+	<servlet> 
+		<servlet-name>UpdateTestChanges</servlet-name> 
+		<servlet-class>org.iso.UpdateTestChanges</servlet-class> 
+	</servlet>
   <servlet>
     <servlet-name>backToMenu</servlet-name>
     <servlet-class>org.iso.backToMenu</servlet-class>
@@ -69,6 +165,14 @@
     <servlet-class>org.iso.MenuAdmin</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>menuStudent</servlet-name>
+    <servlet-class>org.iso.menuStudent</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>menuTeacher</servlet-name>
+    <servlet-class>org.iso.menuTeacher</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>takeSurvey</servlet-name>
     <servlet-class>org.iso.takeSurvey</servlet-class>
   </servlet>
@@ -95,6 +199,14 @@
   <servlet-mapping>
     <servlet-name>MenuAdmin</servlet-name>
     <url-pattern>/MenuAdmin</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>menuStudent</servlet-name>
+    <url-pattern>/menuStudent</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>menuTeacher</servlet-name>
+    <url-pattern>/menuTeacher</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>CalificacionesPrueba</servlet-name>
@@ -164,4 +276,104 @@
     <servlet-name>backToMenu</servlet-name>
     <url-pattern>/backToMenu</url-pattern>
   </servlet-mapping>
+  <servlet-mapping> 
+		<servlet-name>requestTestSpecifications</servlet-name> 
+		<url-pattern>/requestTestSpecifications</url-pattern> 
+	</servlet-mapping> 
+	<servlet-mapping> 
+		<servlet-name>requestSurveySpecifications</servlet-name> 
+		<url-pattern>/requestSurveySpecifications</url-pattern> 
+	</servlet-mapping> 
+	<servlet-mapping> 
+		<servlet-name>TestTemplate</servlet-name> 
+		<url-pattern>/TestTemplate</url-pattern> 
+	</servlet-mapping> 
+	<servlet-mapping> 
+		<servlet-name>SaveTestData</servlet-name> 
+		<url-pattern>/SaveTestData</url-pattern> 
+	</servlet-mapping> 
+	<servlet-mapping> 
+		<servlet-name>SaveSurveyData</servlet-name> 
+		<url-pattern>/SaveSurveyData</url-pattern> 
+	</servlet-mapping> 
+	<servlet-mapping> 
+		<servlet-name>EditSurveyContent</servlet-name> 
+		<url-pattern>/EditSurveyContent</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>UpdateSurveyChanges</servlet-name> 
+		<url-pattern>/UpdateSurveyChanges</url-pattern> 
+	</servlet-mapping> 	
+	<servlet-mapping> 
+		<servlet-name>ViewMarksStudents</servlet-name> 
+		<url-pattern>/ViewMarksStudents</url-pattern> 
+	</servlet-mapping>
+		<servlet-mapping> 
+		<servlet-name>SelectForEdit</servlet-name> 
+		<url-pattern>/SelectForEdit</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>SurveyTemplate</servlet-name> 
+		<url-pattern>/SurveyTemplate</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>EditTestContent</servlet-name> 
+		<url-pattern>/EditTestContent</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>UpdateTestChanges</servlet-name> 
+		<url-pattern>/UpdateTestChanges</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>newUser</servlet-name> 
+		<url-pattern>/newUser</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>EditUser</servlet-name> 
+		<url-pattern>/EditUser</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>UpdateUser</servlet-name> 
+		<url-pattern>/UpdateUser</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>UserPersonalInf</servlet-name> 
+		<url-pattern>/UserPersonalInf</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>disable</servlet-name> 
+		<url-pattern>/disable</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>logout</servlet-name> 
+		<url-pattern>/logout</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>autoCorrect</servlet-name> 
+		<url-pattern>/autoCorrect</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>ViewResultsTeacher</servlet-name> 
+		<url-pattern>/ViewResultsTeacher</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>MarksForm</servlet-name> 
+		<url-pattern>/MarksForm</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>MarksFormSurvey</servlet-name> 
+		<url-pattern>/MarksFormSurvey</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>UploadMarks</servlet-name> 
+		<url-pattern>/UploadMarks</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>UploadMarksSurvey</servlet-name> 
+		<url-pattern>/UploadMarksSurvey</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping> 
+		<servlet-name>generateReportS</servlet-name> 
+		<url-pattern>/generateReportS</url-pattern> 
+	</servlet-mapping>
 </web-app>
