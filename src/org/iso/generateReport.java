@@ -11,7 +11,7 @@ import javax.servlet.http.*;
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font.*;
 import com.itextpdf.text.pdf.*;
- 
+
 public class generateReport extends HttpServlet{ 
 	Connection connection;
     
@@ -30,19 +30,23 @@ public class generateReport extends HttpServlet{
 	throws ServletException, IOException { 
 		
 		HttpSession session = request.getSession(true);
-		
+				
 		Document doc = new Document();
 		doc.setPageSize(PageSize.A4);
+		
+		int test_id = 6;
+		String test_name = "";
 		
 		Font [] fonts = {
 			new Font(),
 			new Font(FontFamily.HELVETICA, 18, Font.NORMAL, new BaseColor(100, 100, 100)),
 			new Font(FontFamily.HELVETICA, 32, Font.BOLD, new BaseColor(175, 0, 0)),
-			new Font(FontFamily.HELVETICA, 12, Font.NORMAL, new BaseColor(0, 0, 0))
+			new Font(FontFamily.HELVETICA, 12, Font.NORMAL, new BaseColor(0, 0, 0)),
+			new Font(FontFamily.HELVETICA, 12, Font.BOLD, new BaseColor(0, 0, 0))
 		};
 		
 		try {
-			PdfWriter.getInstance(doc, new FileOutputStream("testPDF.pdf"));
+			PdfWriter.getInstance(doc, new FileOutputStream("testReport.pdf"));
 			
 			doc.open();
 			
@@ -52,17 +56,43 @@ public class generateReport extends HttpServlet{
 			doc.add(Chunk.NEWLINE);
 			
 			doc.add(new Paragraph("Report Generation date: " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()) + "", fonts[3]));
-			doc.add(new Paragraph("Test name: ", fonts[3]));
-			doc.add(new Paragraph("Teacher: ", fonts[3]));
+			
+			String sql1 = "Select TestsAA.IdTest, TestsAA.TestName from TestsAA where TestsAA.IdTest=" + test_id + "";
+			try {
+				Statement statement = connection.createStatement();
+				ResultSet rs = statement.executeQuery(sql1);
+				if (rs.next()) {
+					test_name = rs.getString("TestName");
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+				System.out.println("Resulset: " + sql1 + " Exception: " + e);
+			}
+			
+			doc.add(new Paragraph("Test name: " + test_name + "", fonts[3]));
 			
 			doc.add(Chunk.NEWLINE);
 			
 			PdfPTable t = new PdfPTable(2);
-			t.addCell("Antonio Amador Duran");
-			t.addCell("10");
+			t.addCell(new Paragraph("Student name", fonts[4]));
+			t.addCell(new Paragraph("Mark", fonts[4]));
+			
+			String sql2 = "SELECT DISTINCT UsersAA.Name, TestStudentAA.IdTest, TestStudentAA.Mark FROM TestStudentAA INNER JOIN UsersAA ON (UsersAA.IdStudent = TestStudentAA.IdStudent) WHERE TestStudentAA.IdTest=" + test_id + "";
+			try {
+				Statement statement = connection.createStatement();
+				ResultSet rs = statement.executeQuery(sql2);
+				while (rs.next()) {
+					t.addCell(rs.getString("Name"));
+					t.addCell(rs.getString("Mark"));
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+				System.out.println("Resulset: " + sql2 + " Exception: " + e);
+			}
+				
 			doc.add(t);
 			
-			Image im = Image.getInstance("content/logo.jpg");
+			Image im = Image.getInstance("http://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Tecnun_logo.jpg/640px-Tecnun_logo.jpg");
 			im.scaleAbsolute(100, 50);
 			im.setAbsolutePosition(450, 40);
 			doc.add(im);
@@ -72,7 +102,10 @@ public class generateReport extends HttpServlet{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			
-
+		
+		ServletContext sc = getServletContext();
+		RequestDispatcher rd = sc.getRequestDispatcher("/testReport");
+		rd.forward(request, response);
+		
 	}
 }

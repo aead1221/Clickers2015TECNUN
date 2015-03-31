@@ -1,5 +1,54 @@
-function openReport() {
-	var win = window.open('reports/testPDF.pdf', '_blank');
+function drawBarChart() {
+	var data = google.visualization.arrayToDataTable([
+		["Question", "Average Value", { role: "style" } ],
+		["Q1", 4.5, "#990000"],
+		["Q2", 2, "#990000"],
+		["Q3", 4.7, "#990000"],
+		["Q4", 3.5, "#990000"],
+		["Q5", 3, "#990000"]
+		]);
+	
+	var view = new google.visualization.DataView(data);
+	view.setColumns([0, 1,
+		{ calc: "stringify",
+		sourceColumn: 1,
+		type: "string",
+		role: "annotation" },
+		2]);
+	
+	var options = {
+		width: 500,
+		height: 300,
+		bar: {groupWidth: "95%"},
+		legend: { position: "none" },
+		};
+	var chart = new google.visualization.BarChart(document.getElementById("clk-stats-survey"));
+	chart.draw(view, options);
+}
+
+function drawPieChart() {
+	var data = google.visualization.arrayToDataTable([
+		['Task', 'Hours per Day'],
+		['m=10',     1],
+		['9<=m<10',      2],
+		['7<=m<9',  3],
+		['5<=m<7', 4],
+		['m<5',    1]
+		]);
+	
+	var options = {
+		is3D: true,
+		'width': 500,
+		'height': 300,
+		slices: [{color: '#6A0000'}, {color: '#990000'}, {color: '#B43838'}, {color: '#CE6161'}, {color: '#D7CFCF'}]
+	};
+	
+	var chart = new google.visualization.PieChart(document.getElementById('clk-stats-test'));
+	chart.draw(data, options);
+}
+
+function openReport(path) {
+	var win = window.open(path +'/testReport');
 	if(win){
 	    //Browser has allowed it to be opened
 	    win.focus();

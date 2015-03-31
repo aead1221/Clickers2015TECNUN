@@ -25,6 +25,7 @@ public class initTest extends HttpServlet{
 		String student_id = "" + session.getAttribute("user_id") + "";
 		
 		String nom = req.getParameter("nom");
+		String tt = req.getParameter("tt");
 		
 		String test_id = "";
 		int test_nq = 0;
@@ -46,13 +47,20 @@ public class initTest extends HttpServlet{
 			Statement statement = connection.createStatement();
 			statement.executeUpdate(sql2);             //This Update is meant to write the Test-Student register, it is presumably not working because of an Access restriction.
 		} catch(SQLException e) {
-			e.printStackTrace();
+			System.out.println("Test/Survey has already been taken and cannot be overwritten");
 			System.out.println("Resulset: " + sql2 + " Exception: " + e);
 		}
 		
 		ServletContext sc = getServletContext();
-		RequestDispatcher rd = sc.getRequestDispatcher("/test?nom="+ nom + "&num=0");
-		rd.forward(req , resp);
+		if (tt.equals("test")) {
+			RequestDispatcher rd = sc.getRequestDispatcher("/takeTest?nom="+ nom + "&num=0&tt=" + tt +"");
+			rd.forward(req , resp);
+		} else {
+			System.out.println(tt);
+			RequestDispatcher rd = sc.getRequestDispatcher("/takeSurvey?nom="+ nom + "&num=0&tt=" + tt +"");
+			rd.forward(req , resp);
+		}
+		
 		
 	}
 }

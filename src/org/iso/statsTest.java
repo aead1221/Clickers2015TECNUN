@@ -5,7 +5,7 @@ import java.util.*;
 import javax.servlet.*; 
 import javax.servlet.http.*;
  
-public class takeTest extends HttpServlet{ 
+public class statsTest extends HttpServlet{ 
 	Connection connection;
     
 	public void init(ServletConfig config) throws ServletException {
@@ -29,9 +29,12 @@ public class takeTest extends HttpServlet{
 		String user = "Antonio";
 		clickers.printTop(response, user);
 		
-		out.println("<div id='clk-box'>");
-		out.println("<br><p align='center'><button class='clk-button' onclick='openReport()'>Download</button></p>");
-		out.println("</div>");
+		String htmlStr = "";
+		htmlStr += "<div id='clk-title'>";
+		htmlStr += "				<h3 align='center'>Test Marks Pie Chart</h3>";
+		htmlStr += "			</div>";
+		htmlStr += "<div id='clk-box'><div id='clk-stats-test'></div></div>";
+		out.println(htmlStr);
 		
 		clickers.printBottom(response);
 	}

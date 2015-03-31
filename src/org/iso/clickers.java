@@ -18,6 +18,12 @@ public class clickers {
 		htmlStr += "		<title>Clickers - Test</title>";
 		htmlStr += "        <link rel=\"stylesheet\" type=\"text/css\" href=\"css/clickers.css\">";
 		htmlStr += "        <script type=\"text/javascript\" src=\"javascript/clickers.js\"></script>";
+		htmlStr += "        <script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>";
+		htmlStr += "        <script type=\"text/javascript\">";
+		htmlStr += "        	google.load(\"visualization\", \"1\", {packages:[\"corechart\"]});";
+		htmlStr += "        	google.setOnLoadCallback(drawPieChart);";
+		htmlStr += "        	google.setOnLoadCallback(drawBarChart);";
+		htmlStr += "        </script>";
 		htmlStr += "	</head>";
 		htmlStr += "	<body>";
 		htmlStr += "        <header>";
@@ -40,7 +46,7 @@ public class clickers {
 		htmlStr += "                    </a>";
 		htmlStr += "                </div>";
 		htmlStr += "            </div>";
-		htmlStr += "            <a href=\"Login.html\">";
+		htmlStr += "            <a href='menu'>";
 		htmlStr += "                <div id=\"clk-menu-bar\">";
 		htmlStr += "                    B A C K   &nbspT O&nbsp   M E N U";
 		htmlStr += "                </div>";

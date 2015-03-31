@@ -2,20 +2,19 @@ package org.iso;
 import java.sql.*;
 import java.io.*;
 import java.util.*;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class CalificacionesPrueba extends HttpServlet {
+public class CalificacionesSurvey extends HttpServlet {
 
 	Connection conn = null;
 	String nombre=null;
 	String apellido=null;
 	String apellido1=null;
-	String TestId=null;
-	String TestName=null;
+	String SurveyId=null;
+	String SurveyName=null;
 	
-	String sql1 =null;
+	String sql =null;
 	
 	String nota=null;
 	public void init (ServletConfig config) throws ServletException {   
@@ -57,8 +56,8 @@ public class CalificacionesPrueba extends HttpServlet {
 	public void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		resp.setContentType("text/html");
-		TestId = req.getParameter("TestId");
-		TestName=req.getParameter("TestName");
+		SurveyId = req.getParameter("SurveyId");
+		SurveyName=req.getParameter("SurveyName");
     
 		PrintWriter out = null;
 		try {
@@ -74,7 +73,7 @@ public class CalificacionesPrueba extends HttpServlet {
 
 		
 			out.println("<div id='clk-title'>");
-			out.println("<label><h3><p align='center'> "+TestName+"</p></h3></label>");
+			out.println("<label><h3><p align='center'> "+SurveyName+"</p></h3></label>");
 			out.println("</div>");
 			out.println("<div id='clk-box'>");
 			
@@ -91,20 +90,19 @@ public class CalificacionesPrueba extends HttpServlet {
 			out.println("</td>");
 			out.println("<td>");
 			out.println("<form method='get' action='statistic.html'>");
-			out.println("<input class='clk-button' type='submit' value='Statistics'>");
+			out.println("<p align='right'><input class='clk-button' type='submit' value='Statistics'></p>");
 			out.println("</form>");
 			out.println("</td>");
 			out.println("<td>");
 			out.println("<input class='clk-button' type='submit' value='Download report'>");
 			out.println("</td>");
 			out.println("<td>");
-			out.println("<a href='MarksForm?TestId="+TestId+"&TestName="+TestName+"'><input class='clk-button' type='submit' value='UploadMarks'></a>");
+			out.println("<a href='MarksFormSurvey?SurveyId="+SurveyId+"&SurveyName="+SurveyName+"'><input class='clk-button' type='submit' value='UploadMarks'></a>");
 			out.println("</td>");
 			out.println("</tr>");
 			out.println("</div>");
 			
-						//out.println("<button type='button' onclick='<a href='MarksForm?TestId="+TestId+"&TestName="+TestName+"'></a>Upload Marks</button>");
-
+			
 		
 			
 			out.println("<tr class='clk-subtitle-st'>");
@@ -117,19 +115,14 @@ public class CalificacionesPrueba extends HttpServlet {
 			out.println("</div>");
 			
 			
-			String sql1="SELECT  FirstName, LastName1, LastName2, Mark from StudentsBF, TestStudentBF where Id_Student=Id and Id_Test="+TestId+"";
-
-				
+			
+			String sql="SELECT  FirstName, LastName1, LastName2, Mark from StudentsBF, SurveyStudentBF where Id_Student=Id and Id_Survey="+SurveyId+"";
 			
 			
-			
-			
-			
-			
-					System.out.println(sql1);
+					System.out.println(sql);
 					try {
 						Statement stmt=conn.createStatement();
-						ResultSet rs = stmt.executeQuery(sql1); //ejecutar sql1
+						ResultSet rs = stmt.executeQuery(sql); //ejecutar sql
 						while(rs.next()) {
 							nombre=rs.getString("FirstName");
 							apellido=rs.getString("LastName1");
@@ -143,16 +136,14 @@ public class CalificacionesPrueba extends HttpServlet {
 							
 							out.println("</tr>");
 						}
-							
+						
 						
 						
 
 					} catch(SQLException e) {
 						e.printStackTrace();
-						System.out.println("Resulset: " + sql1 + " Exception: " + e);
-						out.println("<tr>");
-						out.println("<td><input class='clk-button' type='submit' value='Statistics'></td>");
-						out.println("</tr>");
+						System.out.println("Resulset: " + sql + " Exception: " + e);
+						
 					}
 			
 			

@@ -33,26 +33,27 @@ public class testMenu extends HttpServlet {
 		}
 
 		clickers.printTop(resp, "user");
-
-		out.println("<div id='clk-box'>");
-		out.println("<h3> What test do you want to take, " + session.getAttribute("user") + "?</h3><br>");
-		out.println("<TABLE BORDER='0'>");
-			
-		String sql1 = "SELECT IdTest, TestName FROM TestsAA";
-		//String sql1 = "SELECT Id_Tests, Name FROM Tests";
 		
-		if (connection==null) {
-			System.out.println("IS NULL");
-		}
+		String htmlStr="";
+		htmlStr += "<div id=\"clk-title\">";
+		htmlStr += "				<label><h3>Test/Survey Selection</h3></label>";
+		htmlStr += "			</div>";
+		htmlStr += "			<div id=\"menu-content\">";
+		htmlStr += "				<div class=\"menu-box\">";
+		htmlStr += "					<div class=\"menu-header\">";
+		htmlStr += "						<label>Tests</label>";
+		htmlStr += "					</div>";
+		htmlStr += "					<table style=\"padding-left:15%; padding-top:10%\">";
 		
+		String sql1 = "SELECT IdTest, TestName, TestType FROM TestsAA WHERE TestType='test'";
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql1);
 			while (rs.next()) {
 				String n = rs.getString("TestName");
-				out.println("<TR>");
-				out.println("<TD align=left'><a href='initTest?nom=" + n + "'>" + n + "</a></TD>");
-				out.println("</TR>");
+				htmlStr += "						<tr>";
+				htmlStr += "							<td><label><a href='initTest?nom=" + n + "&tt=test'><b>" + n + "</b></a></label></td>";
+				htmlStr += "						</tr>";
 			}
 			
 		} catch(SQLException e) {
@@ -60,8 +61,35 @@ public class testMenu extends HttpServlet {
 			System.out.println("Resulset: " + sql1 + " Exception: " + e);
 		}
 		
-		out.println("</TABLE>");
-		out.println("</div>");
+		htmlStr += "					</table>";
+		htmlStr += "				</div>";
+		htmlStr += "				<div class=\"menu-box\">";
+		htmlStr += "					<div class=\"menu-header\">";
+		htmlStr += "						<label>Surveys</label>";
+		htmlStr += "					</div>";
+		htmlStr += "					<table style=\"padding-left:15%; padding-top:10%\">";
+		
+		String sql2 = "SELECT IdTest, TestName, TestType FROM TestsAA WHERE TestType='survey'";
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(sql2);
+			while (rs.next()) {
+				String n = rs.getString("TestName");
+				htmlStr += "						<tr>";
+				htmlStr += "							<td><label><a href='initTest?nom=" + n + "&tt=survey'><b>" + n + "</b></a></label></td>";
+				htmlStr += "						</tr>";
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("Resulset: " + sql2 + " Exception: " + e);
+		}
+		
+		htmlStr += "					</table>";
+		htmlStr += "				</div>";
+		htmlStr += "			</div>";
+		
+		out.println(htmlStr);
 
 		clickers.printBottom(resp);
 

@@ -2,10 +2,11 @@ package org.iso;
 import java.sql.*;
 import java.io.*; 
 import java.util.*;
+
 import javax.servlet.*; 
 import javax.servlet.http.*;
  
-public class test extends HttpServlet{ 
+public class takeSurvey extends HttpServlet{ 
 	Connection connection;
     
 	public void init(ServletConfig config) throws ServletException {
@@ -24,24 +25,23 @@ public class test extends HttpServlet{
 		
 		HttpSession session = request.getSession(true);
 		
+		String tt = request.getParameter("tt");
 		String nom = request.getParameter("nom");
 		String numero = request.getParameter("num");	
 		int num = Integer.parseInt(numero);
 		
 		String test_id = "";
 		int test_nq = 0;
-		int test_no = 0;
-		int test_s;
-		float test_p;
+		int test_sn = 0;
 		
-		String sql1 = "Select IdTest, TestName, NoOfQuestions, NoOfOptions from TestsAA where TestName ='" + nom + "'";
+		String sql1 = "Select IdTest, TestName, NoOfQuestions, IdScale from TestsAA where TestName ='" + nom + "'";
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql1);
 			if (rs.next()) {
 				test_id = rs.getString("IdTest");
 				test_nq = Integer.parseInt(rs.getString("NoOfQuestions"));
-				test_no = Integer.parseInt(rs.getString("NoOfOptions"));
+				test_sn = Integer.parseInt(rs.getString("IdScale"));
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -66,17 +66,26 @@ public class test extends HttpServlet{
 		
 		PrintWriter out = response.getWriter(); 
 		clickers.printTop(response, session.getAttribute("user_id").toString());
-		out.println("<div id='clk-box'><h3 align='center'>" + nom + "</h3><br>" + (num+1) + ". " + q);
-		out.println("<div class='q-box'>");
-		out.println("<table>");
-		out.println("<form name='pregunta' method='get' action='writeAnswers'>");
-		for (int l = 1; l <= test_no; l++) {
-			out.println("<TR>");
-			out.println("<TH><input type='radio' name='resp' value='" + l + "'></TH>");
-			out.println("<TH></TH><TH></TH><TH></TH><TH></TH><TH></TH>");
+		String htmlStr="";
+		htmlStr += "<div id='clk-title'>";
+		htmlStr += "				<h3 align='center'>" + nom + "</h3>";
+		htmlStr += "			</div>";
+		htmlStr += "			<div id='clk-box'>";
+		htmlStr += "				Question " + (num+1) + ". " + q + "";
+		htmlStr += "				<br>";
+		htmlStr += "				<br>";
+		htmlStr += "				<div>";
+		htmlStr += "	                    <form name='pregunta' method='get' action='writeAnswers'>";
+		htmlStr += "						<table>";
+		for (int l = 1; l <= test_sn; l++) {
+			htmlStr += "							<TR>";
+			htmlStr += "								<TH>";
+			htmlStr += "									<input type='radio' name='resp' value='" + l + "'>";
+			htmlStr += "								</TH>";
+			htmlStr += "								<TH></TH><TH></TH><TH></TH><TH></TH><TH></TH>";
 			String o = "";
 			
-			String sql3 = "Select OptionT, IdTest, IdQuestion, IdOption from OptionsAA where IdTest =" + test_id + " and IdQuestion= " + (num+1) + " and IdOption=" + (l) + "";
+			String sql3 = "Select OptionT, IdScale, IdOption from ScaleOptionsAA where IdScale =" + test_sn + " and IdOption=" + (l) + "";
 			try{
 				Statement statement = connection.createStatement();
 				ResultSet rs = statement.executeQuery(sql3);
@@ -87,20 +96,21 @@ public class test extends HttpServlet{
 				e.printStackTrace();
 				System.out.println("Resulset: " + sql3 + " Exception: " + e);
 			}
-			
-			out.println("<TH align='left'>" + o + "</TH></TR>");
+			htmlStr += "								<TH align='left'>" + o + "</TH></TR>";
 		}
-		out.println("</table><br>");
+		htmlStr += "						</table><br>";
 		if (num != test_nq-1) {
-			out.println("<input type='submit' value='Next'>");
+			htmlStr += "<input class='clk-button' type='submit' value='Next'>";
 		} else {
-			out.println("<input type='submit' value='Finish'>");
+			htmlStr += "<input class='clk-button' type='submit' value='Finish'>";
 		}
-		out.println("<input name='nom' type='hidden' value='" + nom + "'>");
-		out.println("<input name='num' type='hidden' value='" + num + "'>");
-		out.println("</form>");
-		out.println("</div>");
-		out.println("</div>");
+		htmlStr += "<input name='nom' type='hidden' value='" + nom + "'>";
+		htmlStr += "<input name='num' type='hidden' value='" + num + "'>";
+		htmlStr += "<input name='tt' type='hidden' value='" + tt + "'>";
+		htmlStr += "</form>";
+		htmlStr += "</div>";
+		htmlStr += "</div>";
+		out.println(htmlStr);
 		clickers.printBottom(response);
 	}
 }
