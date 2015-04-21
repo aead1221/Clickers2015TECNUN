@@ -2,6 +2,7 @@ package org.iso;
 import java.sql.*;
 import java.io.*;
 import java.util.*;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -22,50 +23,32 @@ public class ViewMarksStudents extends HttpServlet {
 		
 		HttpSession session = req.getSession(true);
 		//Prove that it takes well the student id
-		String Idstudent = session.getAttribute("user").toString();
-		int idstudent = Integer.parseInt(Idstudent);
+		//String Idstudent = session.getAttribute("user").toString();
+		int idstudent = 1;
 		
 		resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
 		
 		//int idstudent = 1;
 		
-		out.println("<!DOCTYPE html>");
-		out.println("<html lang=\"en\">");
-		out.println("<head>");
-		out.println("<link rel='stylesheet' type='text/css' href='clickers-css.css'>");
-		out.println("<title>Clickers - Menu</title>");
-		out.println("</head>");
-		out.println("	");
-		out.println("<body>");
-		out.println("<header>");
-		out.println("<div id=\"clk-header\">");
-		out.println("<h1>Clickers</h1>");
-		out.println("<h2>TECNUN's online test taking platform</h2>");
-		out.println("</div>");
-		out.println("<div id=\"clk-user-bar\">");
-		out.println("<div id=\"clk-user-buttons\">");
-		out.println("<a href=\"UserPersonalInfo.html\">");
-		out.println("<span id=\"clk-user-view\">");
-		out.println("<img id=\"clk-user-icon\" src=\"user-icon.png\">");
-		out.println("User");
-		out.println("</span>");
-		out.println("</a>");
-		out.println("<a href=\"Login.html\">");
-		out.println("<span id=\"clk-user-logout\">");
-		out.println("Logout");
-		out.println("</span>");
-		out.println("</a>");
-		out.println("</div>");
-		out.println("</div>");
-		out.println("<a href=\"Login.html\">");
-		out.println("<div id=\"clk-menu-bar\">");
-		out.println("B A C K   &nbspT O&nbsp   M E N U");
-		out.println("</div>");
-		out.println("</a>");
-		out.println("</header>");
-		out.println("");
-		out.println("<div class=\"marksStudent\">");
+//		out.println("<!DOCTYPE html>");
+//		out.println("<html lang=\"en\">");
+//		out.println("<head>");
+//		out.println("<link rel='stylesheet' type='text/css' href='clickers-css.css'>");
+//		out.println("<title>Clickers - Menu</title>");
+//		out.println("</head>");
+//		out.println("	");
+//		out.println("<body>");
+//		out.println("<header>");
+//		out.println("<div id=\"clk-header\">");
+//		out.println("<h1>Clickers</h1>");
+//		out.println("<h2>TECNUN's online test taking platform</h2>");
+//		out.println("</div>");
+//		out.println("<div id=\"clk-user-bar\">");
+//		out.println("<div id=\"clk-user-buttons\">");
+	
+		clickers.printTop(resp, session.getAttribute("user").toString());
+		out.println("<div id = 'clk-box'>");
 		out.println("<div class=\"marksStudent-header \">");
 		out.println("<label><p align='center'> Marks</p></label>");
 		out.println("</div>");
@@ -158,7 +141,8 @@ public class ViewMarksStudents extends HttpServlet {
 			out.println("<td> &nbsp;&nbsp;&nbsp; </td>");
 			out.println("<td><label><p align='center'>" + markers[j] + "</p></a></label></td>");
 			out.println("<td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>");
-			out.println("<td><input style type=\"submit\" value=\"Statistics\"></td>");
+			out.println("<td><a href='statsTest'><buttom> Statistics</buttom></a></td>");
+			//out.println("<td><input style type=\"submit\" value=\"Statistics\"></td>");
 			out.println("");
 			out.println("</tr>");
 			out.println("");
@@ -167,18 +151,13 @@ public class ViewMarksStudents extends HttpServlet {
 		out.println("</table>");
 		out.println("</form>");
 		out.println("</div>");
-		out.println("<BR>");
-		out.println("<BR>");
-		out.println("<BR>");
-		out.println("<BR>");
-		out.println("<BR>");
-		out.println("<BR>");
-		out.println("<BR>");
-		out.println("<footer>");
-		out.println("<BR><h6><a href='TeacherMenu.html'>Back to menu</a></h6>");
-		out.println("&copy UN 2015");
-		out.println("</footer>");
-		out.println("</body>");
-		out.println("</html>");
+		
+		clickers.printBottom(resp);
+//		out.println("<footer>");
+//		out.println("<BR><h6><a href='menuTeacher'>Back to menu</a></h6>");
+//		out.println("&copy UN 2015");
+//		out.println("</footer>");
+//		out.println("</body>");
+//		out.println("</html>");
 		}
 		}

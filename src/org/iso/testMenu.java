@@ -45,12 +45,12 @@ public class testMenu extends HttpServlet {
 		htmlStr += "					</div>";
 		htmlStr += "					<table style=\"padding-left:15%; padding-top:10%\">";
 		
-		String sql1 = "SELECT IdTest, TestName, TestType FROM TestsAA WHERE TestType='test'";
+		String sql1 = "SELECT Id_Tests, Description FROM Tests";
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql1);
 			while (rs.next()) {
-				String n = rs.getString("TestName");
+				String n = rs.getString("Description");
 				htmlStr += "						<tr>";
 				htmlStr += "							<td><label><a href='initTest?nom=" + n + "&tt=test'><b>" + n + "</b></a></label></td>";
 				htmlStr += "						</tr>";
@@ -69,14 +69,14 @@ public class testMenu extends HttpServlet {
 		htmlStr += "					</div>";
 		htmlStr += "					<table style=\"padding-left:15%; padding-top:10%\">";
 		
-		String sql2 = "SELECT IdTest, TestName, TestType FROM TestsAA WHERE TestType='survey'";
+		String sql2 = "SELECT Id_Survey, Survey FROM Surveys";
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql2);
 			while (rs.next()) {
-				String n = rs.getString("TestName");
+				String n = rs.getString("Survey");
 				htmlStr += "						<tr>";
-				htmlStr += "							<td><label><a href='initTest?nom=" + n + "&tt=survey'><b>" + n + "</b></a></label></td>";
+				htmlStr += "							<td><label><a href='initSurvey?nom=" + n + "&tt=survey'><b>" + n + "</b></a></label></td>";
 				htmlStr += "						</tr>";
 			}
 			

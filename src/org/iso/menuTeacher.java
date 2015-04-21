@@ -79,15 +79,15 @@ public class menuTeacher extends HttpServlet {
 		out.println("								");
 		out.println("									<table style='padding-left:15%; padding-top:10%'>");
 		out.println("										<tr>");
-		out.println("											<td><label><a href='requestTestSpecifications'><b>Create test/survey</b></a></label></td> ");
+		out.println("											<td><label><a href='requestTestSpecifications'><b>Create test</b></a></label></td> ");
 		out.println("											");
 		out.println("										</tr>");
 		out.println("										<tr>");
-		out.println("											<td><label><a href='requestSurveySpecifications'><b>Create survey/survey</b></a></label></td> ");
+		out.println("											<td><label><a href='requestSurveySpecifications'><b>Create survey</b></a></label></td> ");
 		out.println("											");
 		out.println("										</tr>");
 		out.println("										<tr>");
-		out.println("											<td><label><a href='SelectForEdit'><b>Edit test</b></a></label></td>");
+		out.println("											<td><label><a href='SelectForEdit'><b>Edit test or survey</b></a></label></td>");
 		out.println("											");
 		out.println("										</tr>");
 		out.println("										<tr>");

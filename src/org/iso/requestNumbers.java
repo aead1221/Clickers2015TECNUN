@@ -60,7 +60,7 @@ public class requestNumbers extends HttpServlet {
 		out.println("<INPUT type='submit' value='Continue'>");
 		out.println("</tr></table></form>");
 		out.println("</FORM>");
-		out.println("<BR><h6><a href='menu'>Back to menu</a></h6>");
+		out.println("<BR><h6><a href='menuTeacher'>Back to menu</a></h6>");
 		out.println("</div><footer>&copy UN 2015</footer></body></html>");
 	} 
 }

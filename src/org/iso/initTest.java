@@ -30,19 +30,19 @@ public class initTest extends HttpServlet{
 		String test_id = "";
 		int test_nq = 0;
 		
-		String sql1 = "Select IdTest, TestName from TestsAA where TestName ='" + nom + "'";
+		String sql1 = "Select Id_Tests, Description from Tests where Description ='" + nom + "'";
 		try{
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql1);
 			if (rs.next()) {
-				test_id = rs.getString("IdTest");
+				test_id = rs.getString("Id_Tests");
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 			System.out.println("Resulset: " + sql1 + " Exception: " + e);
 		}
 		
-		String sql2 = "INSERT INTO TestStudentAA (IdTest, IdStudent, DoneS, Mark) VALUES ("+ test_id +", " + student_id + ", 0, 0)";
+		String sql2 = "INSERT INTO TestStudent (Id_Test, Id_Student, Done, Mark) VALUES ("+ test_id +", '" + student_id + "', 0, 0)";
 		try{
 			Statement statement = connection.createStatement();
 			statement.executeUpdate(sql2);             //This Update is meant to write the Test-Student register, it is presumably not working because of an Access restriction.

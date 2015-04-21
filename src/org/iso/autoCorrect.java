@@ -35,13 +35,13 @@ public class autoCorrect extends HttpServlet{
 		int test_done=0;
 		String test_id = "";
 		
-		String sql1 = "Select IdTest, TestName, NoOfQuestions, TestSubtracts, Penalization from TestsAA where TestName ='" + nom + "'";
+		String sql1 = "Select Id_Tests, Description, NumberOfQuestions, Substracts, Penalization from Tests where Description ='" + nom + "'";
 		try{
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql1);
 			if (rs.next()) {
-				test_id = rs.getString("IdTest");
-				test_nq = Integer.parseInt(rs.getString("NoOfQuestions"));
+				test_id = rs.getString("Id_Tests");
+				test_nq = Integer.parseInt(rs.getString("NumberOfQuestions"));
 				test_p = (float)Integer.parseInt(rs.getString("Penalization"))/100;
 			}
 		} catch(SQLException e) {
@@ -58,7 +58,7 @@ public class autoCorrect extends HttpServlet{
 			e1.printStackTrace();
 		}
 		
-		String sql2 = "SELECT DISTINCT QuestionsAA.IdTest, QuestionsAA.IdQuestion, StudentAnswerAA.IdStudent, StudentAnswerAA.AnswerS, QuestionsAA.Answer FROM QuestionsAA INNER JOIN StudentAnswerAA ON (QuestionsAA.IdQuestion = StudentAnswerAA.IdQuestion) AND (QuestionsAA.IdTest = StudentAnswerAA.IdTest) WHERE StudentAnswerAA.IdStudent=" + user_id + " AND QuestionsAA.IdTest=" + test_id + "";
+		String sql2 = "SELECT DISTINCT Questions.IdTest, Questions.IdQuestion, StudentAnswer.IdStudent, StudentAnswer.AnswerS, Questions.Answer FROM Questions INNER JOIN StudentAnswer ON (Questions.IdQuestion = StudentAnswer.IdQuestion) AND (Questions.IdTest = StudentAnswer.IdTest) WHERE StudentAnswer.IdStudent=" + user_id + " AND Questions.IdTest=" + test_id + "";
 		try{
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql2);
@@ -88,12 +88,12 @@ public class autoCorrect extends HttpServlet{
 		
 		System.out.println("Mark final: " + mark);
 		
-		String sql3 = "Select DoneS, IdTest, IdStudent from TestStudentAA where IdTest =" + test_id + " and IdStudent=" + user_id + "";
+		String sql3 = "Select Done, Id_Test, Id_Student from TestStudent where Id_Test =" + test_id + " and Id_Student='" + user_id + "'";
 		try{
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql3);
 			if (rs.next()) {
-				test_done = Integer.parseInt(rs.getString("DoneS"));
+				test_done = Integer.parseInt(rs.getString("Done"));
 				System.out.println("NOT DONE: " + test_done);
 			}
 		} catch(SQLException e) {
@@ -102,7 +102,7 @@ public class autoCorrect extends HttpServlet{
 		}
 		
 		if (test_done == 0) {
-			String sql4 = "UPDATE TestStudentAA SET TestStudentAA.DoneS=1, TestStudentAA.Mark=" + mark + " WHERE (((TestStudentAA.IdTest) =" + test_id + ") and ((TestStudentAA.IdStudent)=" + user_id + "))";
+			String sql4 = "UPDATE TestStudent SET TestStudent.Done=1, TestStudent.Mark=" + mark + " WHERE (((TestStudent.Id_Test) =" + test_id + ") and ((TestStudent.Id_Student)=" + user_id + "))";
 			try{
 				Statement statement = connection.createStatement();
 				statement.executeUpdate(sql4);

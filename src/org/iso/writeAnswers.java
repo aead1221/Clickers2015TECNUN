@@ -23,7 +23,7 @@ public class writeAnswers extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { 
 	
 		HttpSession session = req.getSession(true);
-		String student_id = "" + session.getAttribute("user_id") + "";
+		String student_id = "" + session.getAttribute("user").toString() + "";
 			
 		int num = Integer.parseInt(req.getParameter("num"));
 		String tt = req.getParameter("tt");
@@ -39,20 +39,33 @@ public class writeAnswers extends HttpServlet{
 		String test_id = "";
 		int test_nq = 0;
 		
-		String sql1 = "Select IdTest, TestName, NoOfQuestions from TestsAA where TestName ='" + nom + "'";
+		String sql1 = "Select Id_Tests, Description, NumberOfQuestions from Tests where Description ='" + nom + "'";
 		try{
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql1);
 			if (rs.next()) {
-				test_id = rs.getString("IdTest");
-				test_nq = Integer.parseInt(rs.getString("NoOfQuestions"));
+				test_id = rs.getString("Id_Tests");
+				test_nq = Integer.parseInt(rs.getString("NumberOfQuestions"));
+			} else {
+				String sql11 = "Select Id_Survey, Survey, NumberOfQuestions from Surveys where TestName ='" + nom + "'";
+				try{
+					Statement statement1 = connection.createStatement();
+					ResultSet rs1 = statement1.executeQuery(sql11);
+					if (rs1.next()) {
+						test_id = rs1.getString("Id_Survey");
+						test_nq = Integer.parseInt(rs1.getString("NumberOfQuestions"));
+					}
+				} catch(SQLException e) {
+					e.printStackTrace();
+					System.out.println("Resulset: " + sql11 + " Exception: " + e);
+				}
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 			System.out.println("Resulset: " + sql1 + " Exception: " + e);
 		}
 		
-		String sql2 = "Insert into StudentAnswerAA (IdStudent, IdTest, IdQuestion, AnswerS) Values ('" + student_id + "', '" + test_id + "', '" + (num+1) +"', '" + sresp + "')";
+		String sql2 = "Insert into StudentAnswer (IdStudent, IdTest, IdQuestion, AnswerS) Values ('" + student_id + "', '" + test_id + "', '" + (num+1) +"', '" + sresp + "')";
 		try{
 			Statement statement = connection.createStatement();
 			statement.executeUpdate(sql2);
