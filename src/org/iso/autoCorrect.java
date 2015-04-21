@@ -58,7 +58,7 @@ public class autoCorrect extends HttpServlet{
 			e1.printStackTrace();
 		}
 		
-		String sql2 = "SELECT DISTINCT Questions.IdTest, Questions.IdQuestion, StudentAnswer.IdStudent, StudentAnswer.AnswerS, Questions.Answer FROM Questions INNER JOIN StudentAnswer ON (Questions.IdQuestion = StudentAnswer.IdQuestion) AND (Questions.IdTest = StudentAnswer.IdTest) WHERE StudentAnswer.IdStudent=" + user_id + " AND Questions.IdTest=" + test_id + "";
+		String sql2 = "SELECT DISTINCT Questions.IdTest, Questions.IdQuestion, StudentAnswer.IdStudent, StudentAnswer.AnswerS, Questions.Answer FROM Questions INNER JOIN StudentAnswer ON (Questions.IdQuestion = StudentAnswer.IdQuestion) AND (Questions.IdTest = StudentAnswer.IdTest) WHERE StudentAnswer.IdStudent='" + user_id + "' AND Questions.IdTest=" + test_id + "";
 		try{
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql2);
@@ -102,7 +102,7 @@ public class autoCorrect extends HttpServlet{
 		}
 		
 		if (test_done == 0) {
-			String sql4 = "UPDATE TestStudent SET TestStudent.Done=1, TestStudent.Mark=" + mark + " WHERE (((TestStudent.Id_Test) =" + test_id + ") and ((TestStudent.Id_Student)=" + user_id + "))";
+			String sql4 = "UPDATE TestStudent SET TestStudent.Done=1, TestStudent.Mark=" + mark + " WHERE (((TestStudent.Id_Test) =" + test_id + ") and ((TestStudent.Id_Student)='" + user_id + "'))";
 			try{
 				Statement statement = connection.createStatement();
 				statement.executeUpdate(sql4);

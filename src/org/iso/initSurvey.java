@@ -30,7 +30,7 @@ public class initSurvey extends HttpServlet{
 		String test_id = "";
 		int test_nq = 0;
 		
-		String sql1 = "Select Id_Survey, Survey from Surveys where Surveys ='" + nom + "'";
+		String sql1 = "Select Id_Survey, Survey from Surveys where Survey ='" + nom + "'";
 		try{
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql1);
@@ -42,7 +42,7 @@ public class initSurvey extends HttpServlet{
 			System.out.println("Resulset: " + sql1 + " Exception: " + e);
 		}
 		
-		String sql2 = "INSERT INTO SurveyStudent (Id_Survey, Id_Student, Done, Mark) VALUES ("+ test_id +", " + student_id + ", 0, 0)";
+		String sql2 = "INSERT INTO SurveyStudent (Id_Survey, Id_Student, Done, Mark) VALUES ("+ test_id +", '" + student_id + "', 0, 0)";
 		try{
 			Statement statement = connection.createStatement();
 			statement.executeUpdate(sql2);             //This Update is meant to write the Test-Student register, it is presumably not working because of an Access restriction.

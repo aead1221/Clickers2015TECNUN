@@ -34,14 +34,14 @@ public class takeSurvey extends HttpServlet{
 		int test_nq = 0;
 		int test_sn = 0;
 		
-		String sql1 = "Select IdTest, TestName, NoOfQuestions, IdScale from TestsAA where TestName ='" + nom + "'";
+		String sql1 = "Select Id_Survey, Survey, NumberOfQuestions, NumberOfOptions from Surveys where Survey ='" + nom + "'";
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql1);
 			if (rs.next()) {
-				test_id = rs.getString("IdTest");
-				test_nq = Integer.parseInt(rs.getString("NoOfQuestions"));
-				test_sn = Integer.parseInt(rs.getString("IdScale"));
+				test_id = rs.getString("Id_Survey");
+				test_nq = Integer.parseInt(rs.getString("NumberOfQuestions"));
+				test_sn = Integer.parseInt(rs.getString("NumberOfOptions"));
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -52,7 +52,7 @@ public class takeSurvey extends HttpServlet{
 		
 		String q = "";
 		
-		String sql2 = "Select IdTest, IdQuestion, QuestionT from QuestionsAA where IdTest =" + test_id + " and IdQuestion= " + (num+1) + "";
+		String sql2 = "Select Id_Survey, Id_Question, Question from Squestions where Id_Survey =" + test_id + " and Id_Question= " + (num+1) + "";
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql2);
@@ -85,7 +85,7 @@ public class takeSurvey extends HttpServlet{
 			htmlStr += "								<TH></TH><TH></TH><TH></TH><TH></TH><TH></TH>";
 			String o = "";
 			
-			String sql3 = "Select OptionT, IdScale, IdOption from ScaleOptionsAA where IdScale =" + test_sn + " and IdOption=" + (l) + "";
+			String sql3 = "Select OptionT, IdScale, IdOption from ScaleOptions where IdScale =" + test_sn + " and IdOption=" + (l) + "";
 			try{
 				Statement statement = connection.createStatement();
 				ResultSet rs = statement.executeQuery(sql3);
