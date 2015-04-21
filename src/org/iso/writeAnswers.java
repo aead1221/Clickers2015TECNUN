@@ -47,7 +47,7 @@ public class writeAnswers extends HttpServlet{
 				test_id = rs.getString("Id_Tests");
 				test_nq = Integer.parseInt(rs.getString("NumberOfQuestions"));
 			} else {
-				String sql11 = "Select Id_Survey, Survey, NumberOfQuestions from Surveys where TestName ='" + nom + "'";
+				String sql11 = "Select Id_Survey, Survey, NumberOfQuestions from Surveys where Survey ='" + nom + "'";
 				try{
 					Statement statement1 = connection.createStatement();
 					ResultSet rs1 = statement1.executeQuery(sql11);
@@ -65,13 +65,24 @@ public class writeAnswers extends HttpServlet{
 			System.out.println("Resulset: " + sql1 + " Exception: " + e);
 		}
 		
-		String sql2 = "Insert into StudentAnswer (IdStudent, IdTest, IdQuestion, AnswerS) Values ('" + student_id + "', '" + test_id + "', '" + (num+1) +"', '" + sresp + "')";
-		try{
-			Statement statement = connection.createStatement();
-			statement.executeUpdate(sql2);
-		} catch(SQLException e) {
-			System.out.println("Question has already been answered and cannot be overwritten");
-			System.out.println("Resulset: " + sql2 + " Exception: " + e);
+		if (tt.equals("test")) {
+			String sql2 = "Insert into StudentAnswer (IdStudent, IdTest, IdQuestion, AnswerS) Values ('" + student_id + "', '" + test_id + "', '" + (num+1) +"', '" + sresp + "')";
+			try{
+				Statement statement = connection.createStatement();
+				statement.executeUpdate(sql2);
+			} catch(SQLException e) {
+				System.out.println("Question has already been answered and cannot be overwritten");
+				System.out.println("Resulset: " + sql2 + " Exception: " + e);
+			}
+		} else {
+			String sql2 = "Insert into StudentAnswerS (IdStudent, IdSurvey, IdQuestion, AnswerS) Values ('" + student_id + "', '" + test_id + "', '" + (num+1) +"', '" + sresp + "')";
+			try{
+				Statement statement = connection.createStatement();
+				statement.executeUpdate(sql2);
+			} catch(SQLException e) {
+				System.out.println("Question has already been answered and cannot be overwritten");
+				System.out.println("Resulset: " + sql2 + " Exception: " + e);
+			}
 		}
 		
 		ServletContext sc = getServletContext();

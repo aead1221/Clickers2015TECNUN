@@ -57,7 +57,7 @@ public class takeSurvey extends HttpServlet{
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(sql2);
 			if (rs.next()) {
-				q = rs.getString("QuestionT");
+				q = rs.getString("Question");
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
