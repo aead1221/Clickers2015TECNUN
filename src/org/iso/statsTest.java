@@ -26,6 +26,9 @@ public class statsTest extends HttpServlet{
 		
 		PrintWriter out = response.getWriter();
 		
+		String sql1 = request.getParameter("test_id");
+		System.out.println(sql1);
+		
 		String user = session.getAttribute("name").toString();
 		clickers.printTop(response, user);
 		
@@ -34,6 +37,13 @@ public class statsTest extends HttpServlet{
 		htmlStr += "				<h3 align='center'>Test Marks Pie Chart</h3>";
 		htmlStr += "			</div>";
 		htmlStr += "<div id='clk-box'><div id='clk-stats-test'></div></div>";
+		htmlStr += "<div id='clk-pie-data'>";
+		htmlStr += "<input type='hidden' name='clk-pie-data' value=" + 1 + ">";
+		htmlStr += "<input type='hidden' name='clk-pie-data' value=" + 2 + ">";
+		htmlStr += "<input type='hidden' name='clk-pie-data' value=" + 3 + ">";
+		htmlStr += "<input type='hidden' name='clk-pie-data' value=" + 2 + ">";
+		htmlStr += "<input type='hidden' name='clk-pie-data' value=" + 1 + ">";
+		htmlStr += "</div>";
 		out.println(htmlStr);
 		
 		clickers.printBottom(response);

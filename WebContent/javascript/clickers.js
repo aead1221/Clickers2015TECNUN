@@ -1,4 +1,4 @@
-function drawBarChart() {
+function drawBarChart(array) {
 	var data = google.visualization.arrayToDataTable([
 		["Question", "Average Value", { role: "style" } ],
 		["Q1", 4.5, "#990000"],
@@ -26,14 +26,23 @@ function drawBarChart() {
 	chart.draw(view, options);
 }
 
+function getTestStats() {
+	
+}
+
 function drawPieChart() {
+	
+	var array = document.getElementsByName("clk-pie-data");
+	
+	var array = [1, 2, 3, 2, 10];
+	
 	var data = google.visualization.arrayToDataTable([
 		['Task', 'Hours per Day'],
-		['m=10',     1],
-		['9<=m<10',      2],
-		['7<=m<9',  3],
-		['5<=m<7', 4],
-		['m<5',    1]
+		['m=10',     array[0]],
+		['9<=m<10',      array[1]],
+		['7<=m<9',  array[2]],
+		['5<=m<7', array[3]],
+		['m<5',    array[4]]
 		]);
 	
 	var options = {
