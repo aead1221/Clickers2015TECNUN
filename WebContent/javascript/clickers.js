@@ -34,15 +34,20 @@ function drawPieChart() {
 	
 	var array = document.getElementsByName("clk-pie-data");
 	
-	var array = [1, 2, 3, 2, 10];
+	var values = [];
+	values[array.length - 1] = 0;
+	
+	for (var i=0;i<values.length;i++) {
+		values[i] = parseInt(array[i].value);
+	}
 	
 	var data = google.visualization.arrayToDataTable([
 		['Task', 'Hours per Day'],
-		['m=10',     array[0]],
-		['9<=m<10',      array[1]],
-		['7<=m<9',  array[2]],
-		['5<=m<7', array[3]],
-		['m<5',    array[4]]
+		['m=10',     values[0]],
+		['9<=m<10',      values[1]],
+		['7<=m<9',  values[2]],
+		['5<=m<7', values[3]],
+		['m<5',    values[4]]
 		]);
 	
 	var options = {

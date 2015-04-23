@@ -42,9 +42,9 @@ public class UserPersonalInf extends HttpServlet {
 		toClient.println("<div id=\"clk-user-buttons\">");
 		toClient.println("<a href=\"UserPersonalInfo.html\">");
 		toClient.println("<span id=\"clk-user-view\">");
-		toClient.println("<img id=\"clk-user-icon\" src=\"user-icon.png\">User</span></a>");
+		toClient.println("<img id=\"clk-user-icon\" src=\"images/user-icon.png\">User</span></a>");
 			
-		toClient.println("<a href=\"Login.html\"><span id=\"clk-user-logout\">Logout</span></a></div></div>");
+		toClient.println("<a href=\"logout\"><span id=\"clk-user-logout\">Logout</span></a></div></div>");
 
 		toClient.println("<a href=\"Login.html\">");
 		toClient.println("<div id=\"clk-menu-bar\">B A C K   &nbspT O&nbsp   M E N U </div></a></header>");

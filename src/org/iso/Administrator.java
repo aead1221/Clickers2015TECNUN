@@ -47,7 +47,7 @@ public class Administrator extends HttpServlet {
 	   
 		toClient.println("<a href=\"Login.html\"><span id=\"clk-user-logout\">Logout</span></a></div></div>");
 
-		toClient.println("<a href=\"Login.html\">");
+		toClient.println("<a href=\"logout\">");
 		toClient.println("<div id=\"clk-menu-bar\">B A C K   &nbspT O&nbsp   M E N U </div></a></header>");
 
 		toClient.println("<div id='clk-body'>");

@@ -40,7 +40,7 @@ public class MenuAdmin extends HttpServlet {
 		out.println(session.getAttribute("name").toString());
 		out.println("</span>");
 		out.println("</a>");
-		out.println("<a href=\"Login.html\">");
+		out.println("<a href=\"logout\">");
 		out.println("<span id=\"clk-user-logout\">");
 		out.println("Logout");
 		out.println("</span>");
