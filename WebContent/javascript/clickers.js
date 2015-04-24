@@ -15,7 +15,7 @@ function drawBarChart(array) {
 	for (var i = 1; i < dataArray.length; i++) {
 		dataArray[i] = ["Q" + i, parseFloat(values[i].value), "#990000"];
 	}
-	
+	 	 
 	console.log(dataArray[1]);
 
 	var data = google.visualization.arrayToDataTable(dataArray);
