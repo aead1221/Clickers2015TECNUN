@@ -28,50 +28,51 @@ public class statsTest extends HttpServlet{
 		PrintWriter out = response.getWriter();
 		
 		String ti = request.getParameter("test_id");
+		String tn = request.getParameter("test_name");
 		
 		String user = session.getAttribute("name").toString();
 		clickers.printTop(response, user);
 		
 		
-		String sql2="SELECT COUNT(*) (Select Distinct FirstName, LastName1, LastName2, Mark from Users, TestStudent where TestStudent.Id_Student=Users.IdUser and TestStudent.Id_Test="+ti+" ORDER BY LastName1 ASC)";
+		String sql2="SELECT distinct FirstName, LastName1, LastName2, Mark from Users, TestStudent where TestStudent.Id_Student=Users.IdUser and TestStudent.Id_Test=" + ti + " ORDER BY LastName1 ASC;";
 		
-		int count = 0;
-		
+		int count[] = {0,0,0,0,0};
 		try {
 			Statement stmt=connection.createStatement();
-			ResultSet rs = stmt.executeQuery(sql2); //ejecutar sql1
+			ResultSet rs = stmt.executeQuery(sql2);
 			while(rs.next()){
-			    count = rs.getInt("count");
+			    int mark = Integer.parseInt(rs.getString("Mark"));
+			    if (mark < 5 || mark == 0) {
+			    	count[0]++;
+			    } else if (mark < 7) {
+			    	count[1]++;
+			    } else if (mark < 9) {
+			    	count[2]++;
+			    } else if (mark < 10) {
+			    	count[3]++;
+			    } else {
+			    	count[4]++;
+			    }
 			}
 		} catch(SQLException e) {	
 			e.printStackTrace();
 			System.out.println("Resulset: " + sql2 + " Exception: " + e);
 		}
 		
-		System.out.println(count);
-		
-		String sql1="SELECT distinct FirstName, LastName1, LastName2, Mark from Users, TestStudent where TestStudent.Id_Student=Users.IdUser and TestStudent.Id_Test="+ti+" ORDER BY LastName1 ASC;";
-		
-		try {
-			Statement stmt=connection.createStatement();
-			ResultSet rs = stmt.executeQuery(sql1); //ejecutar sql1
-			while(rs.next()) {
-			}
-		} catch(SQLException e) {	
-			e.printStackTrace();
-			System.out.println("Resulset: " + sql1 + " Exception: " + e);
-		}
 		String htmlStr = "";
 		htmlStr += "<div id='clk-title'>";
 		htmlStr += "				<h3 align='center'>Test Marks Pie Chart</h3>";
 		htmlStr += "			</div>";
-		htmlStr += "<div id='clk-box'><div id='clk-stats-test'></div></div>";
+		htmlStr += "<div id='clk-box'><div id='clk-stats-test'></div>";
+		htmlStr += "<a href='CalificacionesPrueba?TestId=" + ti + "&TestName=" + tn + "'>";
+		htmlStr += "	<button class='clk-button'>Back to marks</button>";
+		htmlStr += "</a></div>";
 		htmlStr += "<div>";
-		htmlStr += "	<input type='hidden' name='clk-pie-data' value=" + 1 + ">";
-		htmlStr += "	<input type='hidden' name='clk-pie-data' value=" + 2 + ">";
-		htmlStr += "	<input type='hidden' name='clk-pie-data' value=" + 3 + ">";
-		htmlStr += "	<input type='hidden' name='clk-pie-data' value=" + 2 + ">";
-		htmlStr += "	<input type='hidden' name='clk-pie-data' value=" + 1 + ">";
+		htmlStr += "	<input type='hidden' name='clk-pie-data' value=" + count[0] + ">";
+		htmlStr += "	<input type='hidden' name='clk-pie-data' value=" + count[1] + ">";
+		htmlStr += "	<input type='hidden' name='clk-pie-data' value=" + count[2] + ">";
+		htmlStr += "	<input type='hidden' name='clk-pie-data' value=" + count[3] + ">";
+		htmlStr += "	<input type='hidden' name='clk-pie-data' value=" + count[4] + ">";
 		htmlStr += "</div>";
 		out.println(htmlStr);
 		

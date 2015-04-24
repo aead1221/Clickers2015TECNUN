@@ -43,11 +43,11 @@ function drawPieChart() {
 	
 	var data = google.visualization.arrayToDataTable([
 		['Task', 'Hours per Day'],
-		['m=10',     values[0]],
-		['9<=m<10',      values[1]],
+		['m=10',     values[4]],
+		['9<=m<10',      values[3]],
 		['7<=m<9',  values[2]],
-		['5<=m<7', values[3]],
-		['m<5',    values[4]]
+		['5<=m<7', values[1]],
+		['m<5',    values[0]]
 		]);
 	
 	var options = {

@@ -59,6 +59,58 @@ public class clickers {
 
 	}
 	
+	public static void printTop(HttpServletResponse response, String name, String user) throws IOException {
+		
+		
+		PrintWriter out = response.getWriter();
+		
+		String htmlStr="";
+		htmlStr += "<!DOCTYPE html>";
+		htmlStr += "<html lang=\"en\">";
+		htmlStr += "	<head>";
+		htmlStr += "		<title>Clickers - Test</title>";
+		htmlStr += "        <link rel=\"stylesheet\" type=\"text/css\" href=\"css/clickers.css\">";
+		htmlStr += "        <script type=\"text/javascript\" src=\"javascript/clickers.js\"></script>";
+		htmlStr += "        <script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>";
+		htmlStr += "        <script type=\"text/javascript\">";
+		htmlStr += "        	google.load(\"visualization\", \"1\", {packages:[\"corechart\"]});";
+		htmlStr += "        	google.setOnLoadCallback(drawPieChart);";
+		htmlStr += "        	google.setOnLoadCallback(drawBarChart);";
+		htmlStr += "        </script>";
+		htmlStr += "	</head>";
+		htmlStr += "	<body>";
+		htmlStr += "        <header>";
+		htmlStr += "            <div id=\"clk-header\">";
+		htmlStr += "                <h1>Clickers</h1>";
+		htmlStr += "                <h2>TECNUN's online test taking platform</h2>";
+		htmlStr += "            </div>";
+		htmlStr += "            <div id=\"clk-user-bar\">";
+		htmlStr += "                <div id=\"clk-user-buttons\">";
+		htmlStr += "                    <a href=\"UserPersonalInf?userid=" + user + "\">";
+		htmlStr += "                        <span id=\"clk-user-view\">";
+		htmlStr += "                            <img id=\"clk-user-icon\" src=\"images/user-icon.png\">";
+		htmlStr += "                            " + name + "";
+		htmlStr += "                        </span>";
+		htmlStr += "                    </a>";
+		htmlStr += "                    <a href=\"logout\">";
+		htmlStr += "                        <span id=\"clk-user-logout\">";
+		htmlStr += "                            Logout";
+		htmlStr += "                        </span>";
+		htmlStr += "                    </a>";
+		htmlStr += "                </div>";
+		htmlStr += "            </div>";
+		htmlStr += "            <a href='backToMenu'>";
+		htmlStr += "                <div id=\"clk-menu-bar\">";
+		htmlStr += "                    B A C K   &nbspT O&nbsp   M E N U";
+		htmlStr += "                </div>";
+		htmlStr += "            </a>";
+		htmlStr += "        </header>";
+		htmlStr += "        <div id=\"clk-body\">";
+		
+		out.println(htmlStr);
+
+	}
+	
 	public static void printBottom(HttpServletResponse response) throws IOException {
 		
 		PrintWriter out = response.getWriter();

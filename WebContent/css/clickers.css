@@ -162,6 +162,10 @@ header h2 {
 	height: 100%;
 }
 
+.clk-num {
+	width: 45px;
+}
+
 #login-body {
 	width: inherit;
 	padding: 150px;
