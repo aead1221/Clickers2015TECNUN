@@ -87,7 +87,8 @@ public class CalificacionesPrueba extends HttpServlet {
 			out.println("<tr>");
 			out.println("<td>");
 			out.println("<form method='get' action='statsTest'>");
-			out.println("<input type='hidden' name='test_id' value='" + TestId + "&test_name="+TestName+"'>");
+			out.println("<input type='hidden' name='test_id' value='" + TestId + "'>");
+			out.println("<input type='hidden' name='test_name' value='" + TestName + "'>");
 			out.println("<input class='clk-button' type='submit' value='Statistics'>");
 			out.println("</form>");
 			out.println("</td>");

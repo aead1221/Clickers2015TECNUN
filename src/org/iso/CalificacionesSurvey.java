@@ -85,6 +85,8 @@ public class CalificacionesSurvey extends HttpServlet {
 			out.println("<tr>");
 			out.println("<td>");
 			out.println("<form method='get' action='statsSurvey'>");
+			out.println("<input type='hidden' name='test_id' value='" + SurveyId + "'>");
+			out.println("<input type='hidden' name='test_name' value='" + SurveyName + "'>");
 			out.println("<p align='right'><input class='clk-button' type='submit' value='Statistics'></p>");
 			out.println("</form>");
 			out.println("</td>");

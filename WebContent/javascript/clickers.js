@@ -1,12 +1,24 @@
 function drawBarChart(array) {
-	var data = google.visualization.arrayToDataTable([
-		["Question", "Average Value", { role: "style" } ],
-		["Q1", 4.5, "#990000"],
-		["Q2", 2, "#990000"],
-		["Q3", 4.7, "#990000"],
-		["Q4", 3.5, "#990000"],
-		["Q5", 3, "#990000"]
-		]);
+	
+	var array = document.getElementsByName("clk-bar-data");
+	
+	var values = [];
+	values[array.length - 1] = 0;
+	
+	for (var i=0;i<values.length;i++) {
+		values[i] = parseFloat(array[i].value) + 0;
+	}
+	
+	var dataArray = [];
+	dataArray[0] = ["Question", "Average Value", { role: "style" } ];
+	
+	for (var i = 1; i < dataArray.length; i++) {
+		dataArray[i] = ["Q" + i, parseFloat(values[i].value), "#990000"];
+	}
+	
+	console.log(dataArray[1]);
+
+	var data = google.visualization.arrayToDataTable(dataArray);
 	
 	var view = new google.visualization.DataView(data);
 	view.setColumns([0, 1,
@@ -24,10 +36,6 @@ function drawBarChart(array) {
 		};
 	var chart = new google.visualization.BarChart(document.getElementById("clk-stats-survey"));
 	chart.draw(view, options);
-}
-
-function getTestStats() {
-	
 }
 
 function drawPieChart() {
