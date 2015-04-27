@@ -12,7 +12,7 @@ function drawBarChart(array) {
 	var dataArray = [];
 	dataArray[0] = ["Question", "Average Value", { role: "style" } ];
 	
-	for (var i = 1; i < dataArray.length; i++) {
+	for (var i = 1; i < values.length; i++) {
 		dataArray[i] = ["Q" + i, parseFloat(values[i].value), "#990000"];
 	}
 	 	 

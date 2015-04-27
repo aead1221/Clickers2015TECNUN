@@ -51,7 +51,7 @@ public class statsSurvey extends HttpServlet{
 		htmlStr += "				<h3 align='center'>Survey Results Bar Chart</h3>";
 		htmlStr += "			</div>";
 		htmlStr += "<div id='clk-box'><div id='clk-stats-survey'></div>";
-		htmlStr += "<a href='CalificacionesPrueba?TestId=" + test_id + "&TestName=" + test_name + "'>";
+		htmlStr += "<a href='CalificacionesSurvey?SurveyId=" + test_id + "&SurveyName=" + test_name + "'>";
 		htmlStr += "	<button class='clk-button'>Back to marks</button>";
 		htmlStr += "</a></div>";
 		htmlStr += "<div>";

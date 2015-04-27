@@ -57,12 +57,12 @@ public class generateReport extends HttpServlet{
 			
 			doc.add(new Paragraph("Report Generation date: " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()) + "", fonts[3]));
 			
-			String sql1 = "Select TestsAA.IdTest, TestsAA.TestName from TestsAA where TestsAA.IdTest=" + test_id + "";
+			String sql1 = "Select Tests.Id_Tests, Tests.Description from Tests where Tests.Id_Tests=" + test_id + "";
 			try {
 				Statement statement = connection.createStatement();
 				ResultSet rs = statement.executeQuery(sql1);
 				if (rs.next()) {
-					test_name = rs.getString("TestName");
+					test_name = rs.getString("Description");
 				}
 			} catch(SQLException e) {
 				e.printStackTrace();
@@ -77,12 +77,12 @@ public class generateReport extends HttpServlet{
 			t.addCell(new Paragraph("Field", fonts[4]));
 			t.addCell(new Paragraph("Global Evaluation", fonts[4]));
 			
-			String sql2 = "SELECT DISTINCT UsersAA.Name, TestStudentAA.IdTest, TestStudentAA.Mark FROM TestStudentAA INNER JOIN UsersAA ON (UsersAA.IdStudent = TestStudentAA.IdStudent) WHERE TestStudentAA.IdTest=" + test_id + "";
+			String sql2 = "SELECT DISTINCT Users.FirstName, Users.LastName1, Users.LastName2, TestStudent.Id_Test, TestStudent.Mark FROM TestStudent INNER JOIN Users ON (Users.IdStudent = TestStudent.Id_Student) WHERE TestStudent.Id_Test=" + test_id + "";
 			try {
 				Statement statement = connection.createStatement();
 				ResultSet rs = statement.executeQuery(sql2);
 				while (rs.next()) {
-					t.addCell(rs.getString("Name"));
+					t.addCell(rs.getString("FirstName") + " " + rs.getString("LastName1"));
 					t.addCell(rs.getString("Mark"));
 				}
 			} catch(SQLException e) {
