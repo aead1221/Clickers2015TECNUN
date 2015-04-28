@@ -34,8 +34,8 @@ public class generateReport extends HttpServlet{
 		Document doc = new Document();
 		doc.setPageSize(PageSize.A4);
 		
-		int test_id = 6;
-		String test_name = "";
+		String test_id = request.getParameter("test_id");
+		String test_name = request.getParameter("test_name");
 		
 		Font [] fonts = {
 			new Font(),
@@ -61,8 +61,10 @@ public class generateReport extends HttpServlet{
 			try {
 				Statement statement = connection.createStatement();
 				ResultSet rs = statement.executeQuery(sql1);
+				System.out.println(sql1 + " UNO");
 				if (rs.next()) {
 					test_name = rs.getString("Description");
+					System.out.println(sql1);
 				}
 			} catch(SQLException e) {
 				e.printStackTrace();
@@ -77,7 +79,7 @@ public class generateReport extends HttpServlet{
 			t.addCell(new Paragraph("Field", fonts[4]));
 			t.addCell(new Paragraph("Global Evaluation", fonts[4]));
 			
-			String sql2 = "SELECT DISTINCT Users.FirstName, Users.LastName1, Users.LastName2, TestStudent.Id_Test, TestStudent.Mark FROM TestStudent INNER JOIN Users ON (Users.IdStudent = TestStudent.Id_Student) WHERE TestStudent.Id_Test=" + test_id + "";
+			String sql2 = "SELECT DISTINCT Users.FirstName, Users.LastName1, Users.LastName2, TestStudent.Id_Test, TestStudent.Mark FROM TestStudent INNER JOIN Users ON (Users.IdUser = TestStudent.Id_Student) WHERE TestStudent.Id_Test=" + test_id + "";
 			try {
 				Statement statement = connection.createStatement();
 				ResultSet rs = statement.executeQuery(sql2);

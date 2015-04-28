@@ -78,6 +78,7 @@ public class statsSurvey extends HttpServlet{
 				//t.addCell("" + resul);
 				
 				htmlStr += "	<input type='hidden' name='clk-bar-data' value=" + resul + ">";
+				System.out.println(resul);
 				
 			} catch(SQLException e) {
 				e.printStackTrace();

@@ -91,7 +91,12 @@ public class CalificacionesSurvey extends HttpServlet {
 			out.println("</form>");
 			out.println("</td>");
 			out.println("<td>");
-			out.println("<a href='generateReportS'><button class='clk-button'>Report</button></a>");
+			out.println("<form method='get' action='generateReportS'>");
+			out.println("<input type='hidden' name='test_id' value='" + SurveyId + "'>");
+			out.println("<input type='hidden' name='test_name' value='" + SurveyName + "'>");
+			out.println("<input class='clk-button' type='submit' value='Report'>");
+			out.println("</form>");
+			//out.println("<a href='generateReportS'><button class='clk-button'>Report</button></a>");
 			out.println("</td>");
 			out.println("<td>");
 			out.println("<a href='MarksFormSurvey?SurveyId="+SurveyId+"&SurveyName="+SurveyName+"'><input class='clk-button' type='submit' value='UploadMarks'></a>");

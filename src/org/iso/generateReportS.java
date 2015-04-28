@@ -34,8 +34,8 @@ public class generateReportS extends HttpServlet{
 		Document doc = new Document();
 		doc.setPageSize(PageSize.A4);
 		
-		int test_id = 7;
-		String test_name = "";
+		String test_id = request.getParameter("test_id");
+		String test_name = request.getParameter("test_name");
 		int test_nq = 0;
 		
 		Font [] fonts = {
@@ -47,7 +47,7 @@ public class generateReportS extends HttpServlet{
 		};
 		
 		try {
-			PdfWriter.getInstance(doc, new FileOutputStream(System.getProperty("user.home") + "/surveyReport.pdf"));
+			PdfWriter.getInstance(doc, new FileOutputStream("C:/Users/Antonio/Documents/eclipse_ws/Clickers/surveyReport.pdf"));
 			
 			doc.open();
 			
@@ -58,13 +58,13 @@ public class generateReportS extends HttpServlet{
 			
 			doc.add(new Paragraph("Report Generation date: " + new SimpleDateFormat("dd-MM-yyyy").format(new Date()) + "", fonts[3]));
 			
-			String sql1 = "Select TestsAA.IdTest, TestsAA.TestName, TestsAA.NoOfQuestions from TestsAA where TestsAA.IdTest=" + test_id + "";
+			String sql1 = "Select Surveys.Id_Survey, Surveys.Survey, Surveys.NumberOfQuestions from Surveys where Surveys.Id_Survey=" + test_id + "";
 			try {
 				Statement statement = connection.createStatement();
 				ResultSet rs = statement.executeQuery(sql1);
 				if (rs.next()) {
-					test_name = rs.getString("TestName");
-					test_nq = Integer.parseInt(rs.getString("NoOfQuestions").toString());
+					test_name = rs.getString("Survey");
+					test_nq = Integer.parseInt(rs.getString("NumberOfQuestions").toString());
 				}
 			} catch(SQLException e) {
 				e.printStackTrace();
@@ -80,7 +80,7 @@ public class generateReportS extends HttpServlet{
 			t.addCell(new Paragraph("Mark", fonts[4]));
 			
 			for (int i=1; i<=test_nq; i++) {
-				String sql2 = "SELECT IdTest, IdQuestion, AnswerS FROM StudentAnswerAA WHERE IdTest=" + test_id + " AND IdQuestion=" + i + "";
+				String sql2 = "SELECT IdSurvey, IdQuestion, AnswerS FROM StudentAnswerS WHERE IdSurvey=" + test_id + " AND IdQuestion=" + i + "";
 				
 				int sum = 0;
 				int num = 0;

@@ -93,7 +93,12 @@ public class CalificacionesPrueba extends HttpServlet {
 			out.println("</form>");
 			out.println("</td>");
 			out.println("<td>");
-			out.println("<a href='generateReport'><button class='clk-button'>Report</button></a>");
+			out.println("<form method='get' action='generateReport'>");
+			out.println("<input type='hidden' name='test_id' value='" + TestId + "'>");
+			out.println("<input type='hidden' name='test_name' value='" + TestName + "'>");
+			out.println("<input class='clk-button' type='submit' value='Report'>");
+			out.println("</form>");
+			//out.println("<a href='generateReport'><button class='clk-button'>Report</button></a>");
 			out.println("</td>");
 			out.println("<td>");
 			out.println("<a href='MarksForm?TestId="+TestId+"&TestName="+TestName+"'><input class='clk-button' type='submit' value='UploadMarks'></a>");

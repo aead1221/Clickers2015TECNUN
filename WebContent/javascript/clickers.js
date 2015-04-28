@@ -9,14 +9,16 @@ function drawBarChart(array) {
 		values[i] = parseFloat(array[i].value) + 0;
 	}
 	
+	console.log(typeof values[2]);
+	
 	var dataArray = [];
 	dataArray[0] = ["Question", "Average Value", { role: "style" } ];
 	
 	for (var i = 1; i < values.length; i++) {
-		dataArray[i] = ["Q" + i, parseFloat(values[i].value), "#990000"];
+		dataArray[i] = ["Q" + i, values[i], "#990000"];
 	}
 	 	 
-	console.log(dataArray[1]);
+	
 
 	var data = google.visualization.arrayToDataTable(dataArray);
 	
@@ -70,7 +72,8 @@ function drawPieChart() {
 }
 
 function openReport() {
-	var path = 'testReport.pdf';
+	//var path = 'testReport.pdf';
+	var path = '#';
 	var win = window.open(path);
 	if(win){
 	    win.focus();
@@ -80,7 +83,8 @@ function openReport() {
 }
 
 function openReportS() {
-	var path = 'surveyReport.pdf';
+	//var path = 'surveyReport.pdf';
+	var path = '#';
 	var win = window.open(path);
 	if(win){
 	    win.focus();
